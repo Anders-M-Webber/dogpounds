@@ -1,0 +1,123 @@
+" To ignore plugin indent changes
+filetype on
+"  to use smart intent for languages.
+filetype indent on
+
+"colorscheme Chasing_Logic
+" allow to using different color scheme to replace default settings
+syntax on
+" turn on syntax highlight function
+syntax enable
+set t_Co=256
+set background=dark
+
+set number
+set relativenumber
+
+set nobackup
+set nowrap
+set noswapfile
+
+set wildmenu
+
+set cursorline cursorcolumn
+"hi cursorcolumn ctermfg=none ctermbg=69 cterm=none
+hi Search ctermfg=none ctermbg=21 cterm=none
+
+" change color settings for OmniCppcomplete
+" selected highlight to red and options are green
+highlight PmenuSel ctermfg=green ctermbg=black gui=bold
+
+"change cursor color for vim
+if &term =~ "xterm\\|rxvt"
+" use an orange cursor in insert mode
+    let &t_SI = "\<Esc>]12;orange\x7"
+" use a red cursor otherwise
+    let &t_EI = "\<Esc>]12;red\x7"
+    silent !echo -ne "\033]12;red\007"
+" reset cursor when vim exits
+    autocmd VimLeave * silent !echo -ne "\033]112\007"
+" use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+endif
+
+      
+set encoding=utf8
+set fileformat=unix
+
+set hlsearch
+set incsearch
+set ignorecase
+
+set mouse=a
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartcase
+
+set autoindent
+"set cindent
+set smartindent
+
+
+set lazyredraw
+set showmatch
+set mat=2
+
+" Always show the status line
+set laststatus=2
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+" ---- > configuration for plugins 
+"tagbar.vim
+let g:tagbar_left=1
+let g:tagbar_autofocus=1
+let g:tagbar_autoclose=1
+
+"mark.vim
+let g:mwDefaultHighlightingNum=18
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwAutoSaveMarks=0
+let g:mwIgnoreCase=0
+
+"Syntastic.vim
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
+
+
+
+" --------> set map leader etc
+let mapleader=","
+
+nnoremap <space> :
+vnoremap <space> :
+
+map <F8> o<ESC>
+" show function name in normal mode only
+" use current directory
+set tags=$PWD/tags
+set autochdir
+
+" --- > shortkeys for plugins
+""mark.vim
+nmap <silent> <leader>hl <Plug>MarkSet
+vmap <silent> <leader>hl <Plug>MarkSet
+nmap <silent> <leader>hh <Plug>MarkClear
+vmap <silent> <leader>hh <Plug>MarkClear
+
+
+nnoremap <silent> <F2> :TagbarToggle<CR>  
+" switch between header/source with F4
+nnoremap <silent> <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" " recreate tags file with F5
+"map <F5> :!ctags -R –c++-kinds=+p –fields=+liaS –extra=+q --language-force=c++ .<CR>
