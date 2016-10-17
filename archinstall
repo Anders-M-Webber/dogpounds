@@ -1,0 +1,103 @@
+#!/bin/bash
+#### this script is used to guide you how to install archLinux
+### @copyLeft, no Guarattee!!!
+
+# show current partitions info
+fdisk -l
+
+#create partitions
+
+cfdisk /dev/sda    
+# select dos , select free space,  1G, [primary], [bootable]
+# select free space,  2G, type-> linux swap/solaris, 
+# select free space,  37G, [primary], [write] yes,[Quit]
+
+fdisk -l
+
+# to format partitions
+mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+
+#mount root partitions
+mount /dev/sda3 /mnt
+mkdir /mnt/boot /mnt/var /mnt/home
+mount /dev/sda1 /mnt/boot
+
+#install base system and devel
+pacstrap /mnt base base-devel
+#update system
+pacman -Syu
+#install bootloader
+pacstrap /mnt grub-bios
+
+#config the system
+genfstab -p /mnt >> /mnt/etc/fstab
+# bash
+arch-chroot /mnt /bin/bash
+
+#time zone
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+#clock
+hwclock --systohc --localtime
+mkinitcpio -p linux
+
+#set root password
+passwd root
+
+# add use john
+useradd -m -g users -G wheel -s /bin/bash john
+passwd john
+
+# install and confirg bootloader
+grub-install /dev/sda
+grub-mkconifg -o /boot/grub/grub.cfg
+
+#reboot to login as root
+exit
+exit
+reboot
+
+#set host name
+hostnamectl set-hostname archlinux
+
+#check ip address
+ip addr
+systemctl enable dhcpcd
+systemctl start dhcpcd
+ip addr
+
+#add john
+vi /etc/sudoers
+#find root ALL =(ALL) All, then add
+john ALL =(ALL) All
+
+# install GUI
+pacman -S xorg
+pacman -s xterm xorg-xclock xorg-twm xorg-xinit xorg-server-utils
+pacman -Syy gnome gnome-extra gnome-tweak-tool
+#enable gnome desktop manager
+systemctl enable gdm
+
+
+# set initial locale
+locale >/etc/locale.conf
+echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen
+echo "en_US ISO-8859-1" >>/etc/locale.gen
+locale-gen
+
+#install vmware tools
+sudo pacman -Syy net-tools gtkmm
+sudo pacman -Syy open-vm-tools
+
+reboot
+
+########!!!!!!!!!!!!!!!!!!!!
+#if terminal does not work,  go to -> settings, Regions & Language and set the language to "english"
+#########!!!!!!!!!!
+
+#pacman -S sudo
+
+# To remove a package in Pacman
+# pacman -Rns package_name
