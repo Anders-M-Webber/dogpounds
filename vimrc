@@ -1,3 +1,35 @@
+" @copyleft, let me know if you find anything bad
+set nocompatible
+filetype off " required for Vundle management plugin
+
+" in order to use the plugin/vundle, do this first!!!!!
+"
+" git clone https://github.com/VundleVim/Vundle.vim.git " ~/.vim/bundle/Vundle.vim
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim   "required
+call vundle#begin() "required
+Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+
+Plugin 'AutoComplPop'   " auto completion
+Plugin 'OmniCppcomplete'   " auto completion
+Plugin 'Tagbar' " to list the invoke struction of current file/code
+Plugin 'bling/vim-airline' " sugar for eyes -status line 
+Plugin 'flazz/vim-colorschemes' " use to change colorscheme but no use now
+Plugin 'c.vim' " use to edit c file by inserting (){}comments, etc
+Plugin 'snipMate' " to expand for to for(....)
+Plugin 'Syntastic' " use to check syntax error
+Plugin 'Mark' " use to highlight marks, i.e., multiply keywords can be highlighted
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'scrooloose/nerdcommenter'
+
+
+" Keep Plugin commands between vundle#begin/end.
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
 " To ignore plugin indent changes
 filetype on
 "  to use smart intent for languages.
@@ -28,7 +60,7 @@ hi Search ctermfg=none ctermbg=21 cterm=none
 " selected highlight to red and options are green
 highlight PmenuSel ctermfg=green ctermbg=black gui=bold
 
-"change cursor color for vim
+"change cursor color
 if &term =~ "xterm\\|rxvt"
 " use an orange cursor in insert mode
     let &t_SI = "\<Esc>]12;orange\x7"
