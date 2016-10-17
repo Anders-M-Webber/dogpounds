@@ -1,0 +1,88 @@
+#***************************************************************
+# Makefile for this silly practice!!!  
+#***************************************************************
+#*   8-04-2015 3pm PCT 
+#****************************************************************    
+#*   Time is flying, DogBug@copyleft 
+#****************************************************************    
+
+
+# The PROGRAM macro defines the name of the project. It allows the project name to be changed.
+
+PROGRAM = dogbug 
+
+# The DATE macro is used for outputting the time of build.
+
+DATE = $(shell date +%c)
+
+# libraries you need to link to
+
+#LIBS = 
+#LIBS +=  
+  
+# The CXXSOURCES macro contains the list of source files.
+
+CXXSOURCES = perfmon.cpp observer.cpp singleton.cpp templatet.cpp
+
+# The CXXOBJECTS macro converts the CXXSOURCES macro into the list of object files.
+
+CXXOBJECTS = $(CXXSOURCES:.cpp=.o)  # expands to list of object files
+
+# The CXXFLAGS macro contains options to be passed to the compiler.
+
+CXXFLAGS = -Wall -g
+
+# The CXX macro defines the C++ compiler.
+
+CXX = g++ 
+
+# The LDFLAGS macro contains all of the library information to be passed to the linker.
+
+#LDFLAGS = 
+#LDFLAGS += 
+#LDFLAGS += $(LIBS)
+
+
+all: $(PROGRAM)
+
+    @echo "Done! You may run the $(PROGRAM)on the target now......"
+    @echo "$(DATE)"
+
+# Link target: automatically builds its object dependencies before executing its link command.
+
+$(PROGRAM): $(CXXOBJECTS)
+    $(CXX) -o $@ $(CXXOBJECTS) $(LDFLAGS)
+    @echo " "
+    @echo "Linking ......"
+    @echo "Creating $(PROGRAM) ......"
+
+# Object targets: rules that define objects and a list of commands for compilation.
+
+perfmon.o :perfmon.cpp perfmon.h
+    @$(CXX) $(CXXFLAGS) -c -o perfmon.o perfmon.cpp
+    @echo " "
+
+observer.o :observer.cpp observer.h
+    @echo " "
+
+singleton.o :singleton.cpp singleton.h
+    @$(CXX) $(CXXFLAGS) -c -o singleton.o singleton.cpp
+
+templatet.o :templatet.cpp templatet.h
+    @$(CXX) $(CXXFLAGS) -c -o templatet.o templatet.cpp
+    @echo " "
+
+    @echo "Building the $(PROGRAM)Project......"
+    @echo " "
+
+    @$(CXX) $(CXXFLAGS) -c -o observer.o observer.cpp
+    @echo " "
+
+# Clean target: "make -f Makefile clean" to remove unwanted objects and executables.
+
+clean:
+    @echo " "
+    @echo "Clean all Object $(CXXOBJECTS) and $(PROGRAM) Files......"
+    @$(RM) -f $(CXXOBJECTS) $(PROGRAM)
+    @echo "  done."
+
