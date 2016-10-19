@@ -1,0 +1,212 @@
+#### this is ref for using vi/vim effectively
+
+# move           ---------------------->
+
+`.       # jump to last change
+`"       # jump to last exited
+`0       # jump to last file edited
+`1       # jump to previous file 
+''       # jump back to line jumped from
+``       # jump back to position jumped from
+`[ or `]    # jump to beginning/end of previous changed/yanked
+`< or `>    # jump to beginning/end of last visual selection
+
+
+H           – Go to the first line of current screen.
+M           – Go to the middle line of current screen.
+L           – Go to the last line of current screen.
+
+ctrl+d      – Jump  (down) a half screen
+ctrl+u      – Jump  (up) one half screen
+
+N%          – Go to the Nth percentage line of the file.
+^           – go to the first non blank character of the line.
+g_          – go to the last non blank character of the line.
+gm          - go to the middle of line
+nG          - jump to n(th) lines
+
+
+
+# copy/paste   ------------------->
+
+yfx         --- copy content from current to x
+dfx         --- cut content from current to x
+y2fx        --- copy content from current to the second x
+shift+p     ---- paste to previous line
+
+:%y        --- copy all
+
+# deletion    ------------->
+
+dj              # delete above line
+dk              # delete next line
+
+diw             --- delete current word (does not contain blank)
+daw             --- delete current word (contains blank)
+
+d$ or D          --- delete from current to the end of line
+d]) or ct)             --- delete from current to the end of ) 
+d]} or ct}              --- delete from current to the end of }
+cT)                    --- delete backward
+
+ndd                 --- delete/cut n lines
+dG                  ---  delete/cut to end of the file
+
+
+kdgg                    # delete all lines before 
+jdG                     # delelte all lines after
+:1,10d                  # delete 1-10 lines
+:11,$d                  # delete all after 11th lines
+:1,$d                   # delete all
+
+J(shift + j)　　        # join two lines, gJ del space
+
+cw              #del to the end of the word
+c0              #del to the begining of the line
+c$              #del to the end of the line
+c2b             #del 2 words backward
+s               # del current character and be insert mode
+S               #
+
+ci(, di(, yi(     #change, del/cut, yank content between ()
+ca(, da(, ya(     #change, del/cut, yank content in and contains()
+
+
+# select or search          ----------------->
+
+:g/pattern/#         # to list all matches in a new window
+[I                   # same as above
+
+V               - selects entire lines 
+v               - selects range of text
+ctrl-v          - selects columns
+gv              - reselect block
+
+
+#  other edit : replace/swap/change cases  --------------------->
+
+:set ic         --- ignore case
+:s/old/new      ---- replace the first old
+:s/old/new/g  --- replace in current line
+:%s/old/new/g  --- replace in the file
+:%s/old/new/c   --- confirm before replace
+
+
+xp      # swap two characters current and next
+Xp      # swap two characters current and previous
+ddp     # swap two lines
+ddkP or ddkkp    # Swap two lines current and previous
+
+
+~       # change to upper/lower case
+3~      # change 3 characters from current to upper/lower case
+g~~     # change current line
+U       # at visual mode, change all selected characters  
+u       # at visual mode, change all selected to lower case
+gUU     # change current line to upper case   
+3gUU    # change below 3 lines from current to upper case 
+guu     # change current line to lower case
+gUw     # change current word to upper case
+guw     # change curretn wordd to lower case
+
+gq      ---  to split long lines into multiple lines each containing
+            ‘textwidth’ option number of characters per line.
+
+# tabs ------------------------------->
+
+tabnew #3                   --- to open buffer 3rd in a new tab, useful when you want to open the last tabe you closed.
+tabdo  %s/old/new/g         --- run command in all-pages
+tabm n                      --- change current page to nth
+tabo                        --- close all pages but the current
+tabc                        --- close current page
+
+tabf *.file                 -- search *.file in current directory but only open one.
+
+tabs                        --- list all opened page
+tabr                        --- jump to the first page, might not work
+ctrl+w gf                   --- open file in new tab
+
+tabf  %<.hxx                --- open header file based on current file 
+
+
+# code browser    -------------->
+
+ga    # show ascii of current characters
+g8    # show utf-8 of current characters
+
+:set list    # show all invisible characters
+
+:set lhsearch    --- on the highlight
+:set nohlsearch  --- off the highlight
+:noh       ###disable search highlight until next search
+
+*               - search for word currently under cursor
+g*              - search for partial word under cursor   (repeat with n/N)
+
+gd          --- go to local variable declaration
+gD          --- go to global declaration
+
+gf          --- go to file, like header file
+g*/g#       --- go to the word contains current word
+
+g;          --- go to the previous modification
+g,          --- go to the next modification
+
+
+# buffers   -------->
+
+
+
+
+# vim windows   -------->
+
+vim -o file1 file2          # horizontally split windows
+vim -O file1 file2          #vertically split window
+sp                          #horizontally split window , ctrl+s would froze the terminal, ctrl+q can fix
+vsp                         #vertically split window
+only                        #close all other windows
+
+ctrl_w +                    #increase one line of window
+ctrl_w -                    #decrease one row
+
+:Sex                        #horizontally split a window and browser file system
+:Vex                        #vertically split a window and browser file system  
+
+# plugins      --------------->
+
+
+
+<---------------------terminator shortcuts----------->
+ctrl+shift+E                #vertical split a new window
+ctrl+shift+O                #horizontally split a new window
+
+Ctrl+Shift+T                #         Open new tab
+Ctrl+PageDown               #          Move to next Tab
+Ctrl+PageUp                 #       Move to previous Tab
+
+Ctrl +Shift +N or  Ctrl +Tab         # switch to next tab 
+Ctrl +Shift +P or  Ctrl +Shift+Tab     # switch to previous tab
+
+
+Ctrl+Shift+F                #   Search within terminal scrollback 
+Ctrl+Shift+S                #   Hide/Show Scrollbar.
+
+Ctrl-Shift-X                #   max window
+ctrl + shift + z            #   zooms the current terminal and Increase font 
+Ctrl+Plus (+)               #   Increase  font  size. 
+Ctrl+Minus (-)              #   Decrease font size. 
+Ctrl+Zero (0)               #  Restore font size to original setting.
+
+Ctrl+Shift+R                # Reset terminal state
+Ctrl+Shift+G                # Reset terminal state and clear window
+
+Ctrl+Shift+PageDown         #  Swap tab position with next Tab
+Ctrl+Shift+PageUp     # Swap tab position with previous Tab
+
+
+# to adjust window size
+
+    Ctrl+Shift+  Up 
+    Ctrl+Shift+  Down
+    Ctrl+Shift+  Left
+    Ctrl+Shift+  Right
