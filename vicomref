@@ -172,11 +172,81 @@ ctrl_w -                    #decrease one row
 :Sex                        #horizontally split a window and browser file system
 :Vex                        #vertically split a window and browser file system  
 
+# fold   ----------------->
+
+zo      -> open fold.
+zc      -> close fold.
+
+zr      -> reducing folding level.
+zm      -> one more folding level.
+
+zR      -> Reduce completely the folding.
+zM      -> fold Most.
+
+
+# format    ------------------>
+
+ V=         - select text, then reformat with =
+ =          - will correct alignment of code
+ ==         - one line; 
+
+ >>           Indent line by shift-width spaces
+ <<           De-indent line by shift-width spaces
+ 5>>          Indent 5 lines
+ 5==          Re-indent 5 lines
+
+ >%           Increase indent of a braced or bracketed block (place cursor on brace first)
+ =%           Re-indent a braced or bracketed block (cursor on brace)
+ <%           Decrease indent of a braced or bracketed block (cursor on brace)
+ ]p           Paste text, aligning indentation with surroundings
+
+ =i{          Re-indent the 'inner block', i.e. the contents of the block
+ =a{          Re-indent 'a block', i.e. block and containing braces
+ =2a{         Re-indent '2 blocks', i.e. this block and containing block
+
+ >i{          Increase inner block indent
+ <i{          Decrease inner block indent
+
+
+normal mode:
+
+    >>  right indent one shift-width
+    <<  left indent
+
+insert mode:
+
+CTRL+SHIFT+T:   right indent
+CTRL+SHIFT+D:   left indent
+
+Options to change how automatic formatting is done:
+
+:set formatoptions (default "tcq")
+                 t - textwidth
+                 c - comments (plus leader -- see :help comments)
+                 q - allow 'gq' to work
+                 n - numbered lists
+                 2 - keep second line indent
+                 1 - single letter words on next line
+                 r - (in mail) comment leader after 
+
+ Other related options:
+
+ :set wrapmargin
+ :set textwidth
+
+ :ce     #current line to center
+ :le     #to left
+ :ri     #to right
+ gq      #reformat, break long line
+ gqq     #reformat current line
+ gqnq    #reformat n lines
+ gqnj    #reformat current and following n lines
 # plugins      --------------->
 
 
+# other often use sw    --------------->
 
-<---------------------terminator shortcuts----------->
+                 <---------------------terminator shortcuts----------->
 ctrl+shift+E                #vertical split a new window
 ctrl+shift+O                #horizontally split a new window
 
@@ -210,3 +280,78 @@ Ctrl+Shift+PageUp     # Swap tab position with previous Tab
     Ctrl+Shift+  Down
     Ctrl+Shift+  Left
     Ctrl+Shift+  Right
+
+<-----------------system terminal ------------------------>
+ctrl+w -            #   decrease font size
+ctrl+shift +        #   increase font size
+
+ctrl+w >            #   increase window width
+ctrl+w <            #   decrease window width
+ctrl+w =            #   equal window width
+
+change the window menu options "min max close" to left side,
+gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+
+to the right side,
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+
+-----------------------bash commands------------------------------
+
+gnome-open xx       # to open everything
+eog xx.jpg          # to open image
+
+Ctrl + a            ：jump to the beginning of line
+Ctrl + e            ：jump to the end of line
+Ctrl + f            ：move right character 
+Ctrl + b            ：move left character
+Alt + f             ：move right wordly
+Alt + b             ：move left wordly
+Ctrl + xx           ：move between current character and beginning of line
+
+Ctrl + u            ：del to line beginning from current
+Ctrl + k            ：del to line end from current
+Ctrl + w            ：del to word beginning from current
+Alt + d             ：del to word end from current
+
+Ctrl + d            ：del current character
+Ctrl + h            ：del character before
+
+Ctrl + y            ：paste to position after current
+Alt + c             ：change character to upper case from current
+Alt + u             ：change all to upper case from current
+Alt + l             ：change character to lower
+Ctrl + t            ：swap current and previous character
+Alt + t             ：swap current and previous word
+Alt + Backspace     ：see Ctrl + w
+
+
+Ctrl + r        ：search history inversely
+Ctrl + g        ：quit from history search
+Ctrl + p        ：previous command of history
+Ctrl + n        ：next command of history
+Alt + .         ：use last arg of last command
+
+
+Ctrl + l        ：clean screen
+Ctrl + o        ：run current command and select last command
+Ctrl + s        ：block output to screen
+Ctrl + q        ：allow screen output
+Ctrl + c        ：terminat command
+Ctrl + z        ：hang up
+
+Bang (!) 
+
+!!              ：run last command
+!blah           ：run last command with blah
+!blah:p         ：dont run but output
+
+!$              ：same as Alt + . 
+!$:p            ：print !$ content
+
+!*              ：all args of last command
+!*:p            ：
+
+^blah           ：del blah in last command
+^blah^foo       ：replace blah to foo in last command
+^blah^foo^      ：replace all blahs to foo in last command
