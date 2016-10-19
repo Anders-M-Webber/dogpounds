@@ -2,7 +2,7 @@
 
 #### this file is to install some sw for view sc
 #### @copyLeft, no guarantee!!!
-VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
+VIBUNDLEDIR="$HOME/.vim/bundle/Vundle"
 
 ## install vim
 
@@ -40,7 +40,7 @@ if [ ! -d $VIBUNDLEDIR ];then
     read bundleinstall
 
     if [ "YES" == "$bundleinstall" ];then
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     fi
 fi
 
