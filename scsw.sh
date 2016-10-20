@@ -3,6 +3,15 @@
 #### this file is to install some sw for view sc
 #### @copyLeft, no guarantee!!!
 
+LINUX_DIS="$(uname -a | awk -F " " '{print $2}')"
+
+if [ "archlinux" == "$LINUX_DIS" ];then
+    INSTALLCOM="pacman -Syy"
+elif [ "ubuntu" == "$LINUX_DIS" ];then
+    INSTALLCOM="sudo apt-get install"
+else
+    INSTALLCOM="yum"
+if
 
 VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
 LIVELATEXPREVIEW="$HOME/.vim/bundle/livelatexpreview"
@@ -17,7 +26,8 @@ if [ -z "$(echo `which vim`)" ];then
     read viminstall
 
     if [ "YES" == "$viminstall" ];then
-        sudo apt-get install vim
+        #sudo apt-get install vim
+        $INSTALLCOM vim
     fi
 else
     echo "VIM has been installed!\n"
@@ -41,7 +51,8 @@ if [ -z "$(echo `which ctags`)" ];then
     read ctagsinstall
 
     if [ "YES" == "$ctaginstall" ];then
-        sudo apt-get install ctags 
+        #sudo apt-get install ctags 
+        $INSTALLCOM ctags
     fi
 else
     echo "ctags has been installed!\n"
@@ -53,7 +64,8 @@ if [ -z "$(echo `which cscope`)" ];then
     read cscopeinstall
 
     if [ "YES" == "$ctaginstall" ];then
-        sudo apt-get install cscope 
+        #sudo apt-get install cscope 
+        $INSTALLCOM cscope
     fi
 else
     echo "cscope has been installed!\n"
@@ -66,7 +78,8 @@ if [ -z "$(echo `which ag`)" ];then
     read aginstall
 
     if [ "YES" == "$aginstall" ];then
-        sudo apt-get install silversearcher-ag
+        #sudo apt-get install silversearcher-ag
+        $INSTALLCOM silversearcher-ag
     fi
 else
     echo "ag has been installed!\n"
@@ -78,7 +91,8 @@ if [ -z "$(echo `which tig`)" ];then
     read tiginstall
 
     if [ "YES" == "$tiginstall" ];then
-        sudo apt-get install tig 
+        #sudo apt-get install tig 
+        $INSTALLCOM tig
     fi
 else
     echo "tig has been installed!\n"
@@ -90,7 +104,8 @@ if [ -z "$(echo `which terminator`)" ];then
     read terminatorinstall
 
     if [ "YES" == "$terminatorinstall" ];then
-        sudo apt-get install terminator 
+        #sudo apt-get install terminator 
+        $INSTALLCOM terminator
     fi
 else
     echo "terminator has been installed!\n"
@@ -102,9 +117,10 @@ if [ -z "$(echo `which notepadqq`)" ];then
     read notepadqqinstall
 
     if [ "YES" == "$notepadqqinstall" ];then
-        sudo add-apt-repository ppa:notepadqq-team/notepadqq
-        sudo apt-get update
-        sudo apt-get install notepadqq
+        #sudo add-apt-repository ppa:notepadqq-team/notepadqq
+        #sudo apt-get update
+        #sudo apt-get install notepadqq
+        $INSTALLCOM notepadqq
     fi
 else
     echo "notepadqq has been installed!\n"
@@ -116,9 +132,10 @@ if [ -z "$(echo `which git`)" ];then
     read gitinstall
 
     if [ "YES" == "$gitinstall" ];then
-        sudo add-apt-repository ppa:git-core/ppa
-        sudo apt-get update
-        sudo apt-get install git-all
+        #sudo add-apt-repository ppa:git-core/ppa
+        #sudo apt-get update
+        #sudo apt-get install git-all
+        $INSTALLCOM git-all
     fi
 else
     echo "git all has been installed!\n"
