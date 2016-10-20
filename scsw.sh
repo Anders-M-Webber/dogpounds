@@ -141,7 +141,9 @@ if [ -z "$(echo `which latex`)" ];then
 
     if [ "YES" == "$latexinstall" ];then
         echo " download it from "https://www.tug.org/texlive/acquire-netinstall.html""
-        wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        wget -o /home/user/Downloads/install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        tar xvzf /home/user/Downloads/install-tl-unx.tar.gz
+        echo " go to the unzipped directory and install it manually, process will take more than 2 hours!"
     fi
 else
     echo "latex live has been installed!\n"
