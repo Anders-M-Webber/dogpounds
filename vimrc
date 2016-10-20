@@ -99,7 +99,7 @@ set mat=2
 " Always show the status line
 set laststatus=2
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
@@ -134,6 +134,7 @@ let mapleader=","
 nnoremap <space> :
 vnoremap <space> :
 
+# <F8> is used as "Enter"
 map <F8> o<ESC>
 " show function name in normal mode only
 " use current directory
