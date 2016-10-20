@@ -2,7 +2,13 @@
 
 #### this file is to install some sw for view sc
 #### @copyLeft, no guarantee!!!
-VIBUNDLEDIR="$HOME/.vim/bundle/Vundle"
+
+
+VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
+LIVELATEXPREVIEW="$HOME/.vim/bundle/livelatexpreview"
+
+
+
 
 ## install vim
 
@@ -117,5 +123,41 @@ if [ -z "$(echo `which git`)" ];then
 else
     echo "git all has been installed!\n"
 fi
+
+if [ ! -d $LIVELATEXPREVIEW ];then
+    echo "(10) live-preivew-of-latex-in-vim is not installed in the system, install it (YES)?"
+    read livelatexinstall
+
+    if [ "YES" == "$livelatexinstall" ];then
+        git clone https://github.com/xuhdev/vim-latex-live-preview.git ~/.vim/bundle/livelatexpreview
+    fi
+else
+    echo "live latex preview has been cloned!\n"
+fi
+
+if [ -z "$(echo `which latex`)" ];then
+    echo "(11) latex live is not installed in the system, install it (YES)?"
+    read latexinstall
+
+    if [ "YES" == "$latexinstall" ];then
+        echo " download it from "https://www.tug.org/texlive/acquire-netinstall.html""
+        wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    fi
+else
+    echo "latex live has been installed!\n"
+fi
+
+if [ -z "$(echo `which yed`)" ];then
+    echo "(12) yed graphic editor is not installed in the system, install it (YES)?"
+    read yedinstall
+
+    if [ "YES" == "$yedinstall" ];then
+        echo " download it from http://www.yworks.com/downloads"
+    fi
+else
+    echo "yed has been installed!\n"
+fi
+
+
 
 echo "All set!!!"
