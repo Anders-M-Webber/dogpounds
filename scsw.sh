@@ -7,10 +7,10 @@ LINUX_DIS="$(uname -a | awk -F " " '{print $2}')"
 
 if [ "archlinux" == "$LINUX_DIS" ];then
     INSTALLCOM="pacman -Syy"
-elif [ "ubuntu" == "$LINUX_DIS" ];then
+elif [[ "ubuntu" == "$LINUX_DIS" || "debian" == "$LINUX_DIS" ]];then
     INSTALLCOM="sudo apt-get install"
-else
-    INSTALLCOM="yum"
+else  # for fedora/redhat
+    INSTALLCOM="yum install"
 if
 
 VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
