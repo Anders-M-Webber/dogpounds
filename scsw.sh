@@ -7,76 +7,92 @@ VIBUNDLEDIR="$HOME/.vim/bundle/Vundle"
 ## install vim
 
 if [ -z "$(echo `which vim`)" ];then
-    echo "vim is not installed in the system, install it (YES)?"
+    echo "(1) vim is not installed in the system, install it (YES)?"
     read viminstall
 
     if [ "YES" == "$viminstall" ];then
         sudo apt-get install vim
     fi
+else
+    echo "VIM has been installed!\n"
 fi
 
+if [ ! -d $VIBUNDLEDIR ];then
+    echo "(2) bundle is not installed in the system, install it (YES)?"
+    read bundleinstall
+
+    if [ "YES" == "$bundleinstall" ];then
+#otherwise you can not use plugin management in vim
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
+else
+    echo "bundle has been cloned!\n"
+fi
+
+
 if [ -z "$(echo `which ctags`)" ];then
-    echo "ctags is not installed in the system, install it (YES)?"
+    echo "(3) ctags is not installed in the system, install it (YES)?"
     read ctagsinstall
 
     if [ "YES" == "$ctaginstall" ];then
         sudo apt-get install ctags 
     fi
+else
+    echo "ctags has been installed!\n"
 fi
 
 
 if [ -z "$(echo `which cscope`)" ];then
-    echo "cscope is not installed in the system, install it (YES)?"
+    echo "(4) cscope is not installed in the system, install it (YES)?"
     read cscopeinstall
 
     if [ "YES" == "$ctaginstall" ];then
         sudo apt-get install cscope 
     fi
+else
+    echo "cscope has been installed!\n"
 fi
 
-
-if [ ! -d $VIBUNDLEDIR ];then
-    echo "bundle is not installed in the system, install it (YES)?"
-    read bundleinstall
-
-    if [ "YES" == "$bundleinstall" ];then
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    fi
-fi
 
 
 if [ -z "$(echo `which ag`)" ];then
-    echo "silver search ag is not installed in the system, install it (YES)?"
+    echo "(5) silver search ag is not installed in the system, install it (YES)?"
     read aginstall
 
     if [ "YES" == "$aginstall" ];then
         sudo apt-get install silversearcher-ag
     fi
+else
+    echo "ag has been installed!\n"
 fi
 
 
 if [ -z "$(echo `which tig`)" ];then
-    echo "tig is not installed in the system, install it (YES)?"
+    echo "(6) tig is not installed in the system, install it (YES)?"
     read tiginstall
 
     if [ "YES" == "$tiginstall" ];then
         sudo apt-get install tig 
     fi
+else
+    echo "tig has been installed!\n"
 fi
 
 
 if [ -z "$(echo `which terminator`)" ];then
-    echo "terminator is not installed in the system, install it (YES)?"
+    echo "(7) terminator is not installed in the system, install it (YES)?"
     read terminatorinstall
 
     if [ "YES" == "$terminatorinstall" ];then
         sudo apt-get install terminator 
     fi
+else
+    echo "terminator has been installed!\n"
 fi
 
 
 if [ -z "$(echo `which notepadqq`)" ];then
-    echo "notepadqq is not installed in the system, install it (YES)?"
+    echo "(8) notepadqq is not installed in the system, install it (YES)?"
     read notepadqqinstall
 
     if [ "YES" == "$notepadqqinstall" ];then
@@ -84,11 +100,13 @@ if [ -z "$(echo `which notepadqq`)" ];then
         sudo apt-get update
         sudo apt-get install notepadqq
     fi
+else
+    echo "notepadqq has been installed!\n"
 fi
 
 
 if [ -z "$(echo `which git`)" ];then
-    echo "git is not installed in the system, install it (YES)?"
+    echo "(9) git is not installed in the system, install it (YES)?"
     read gitinstall
 
     if [ "YES" == "$gitinstall" ];then
@@ -96,6 +114,8 @@ if [ -z "$(echo `which git`)" ];then
         sudo apt-get update
         sudo apt-get install git-all
     fi
+else
+    echo "git all has been installed!\n"
 fi
 
 echo "All set!!!"
