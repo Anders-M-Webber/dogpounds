@@ -101,3 +101,16 @@ reboot
 
 # To remove a package in Pacman
 # pacman -Rns package_name
+
+
+
+--------------->done this to enable sharefolder may NOT work 
+install VMwareTools by default, use "-d default"
+
+install ifconfig, use "pacman -Syy net-tools"
+
+install VMwareTools patches, use,
+git clone https://github.com/rasa/vmware-tools-patches.git
+cd vmware-tools-patches
+cp vmware-tools-distrib to here 
+./patched-open-vm-tools.sh
