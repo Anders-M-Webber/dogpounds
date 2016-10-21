@@ -9,12 +9,13 @@ if [ "archlinux" == "$LINUX_DIS" ];then
     INSTALLCOM="pacman -Syy"
 elif [[ "ubuntu" == "$LINUX_DIS" || "debian" == "$LINUX_DIS" ]];then
     INSTALLCOM="sudo apt-get install"
+    INSTALLUPDATE="sudo apt-get update"
 else  # for fedora/redhat
     INSTALLCOM="yum install"
 if
 
 VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
-LIVELATEXPREVIEW="$HOME/.vim/bundle/livelatexpreview"
+LIVELATEXPREVIEW="$HOME/.vim/plugin/livelatexpreview"
 
 
 
@@ -146,7 +147,7 @@ if [ ! -d $LIVELATEXPREVIEW ];then
     read livelatexinstall
 
     if [ "YES" == "$livelatexinstall" ];then
-        git clone https://github.com/xuhdev/vim-latex-live-preview.git ~/.vim/bundle/livelatexpreview
+        git clone https://github.com/xuhdev/vim-latex-live-preview.git ~/.vim/plugin/livelatexpreview
     fi
 else
     echo "live latex preview has been cloned!\n"
