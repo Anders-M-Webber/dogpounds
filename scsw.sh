@@ -153,7 +153,7 @@ else
     echo "live latex preview has been cloned!\n"
 fi
 
-if [ -z "$(echo `which latex`)" ];then
+if [ -z "$(echo `which pdflatex`)" ];then
     echo "(11) latex live is not installed in the system, install it (YES)?"
     read latexinstall
 
@@ -162,6 +162,13 @@ if [ -z "$(echo `which latex`)" ];then
         wget -o /home/user/Downloads/install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
         tar xvzf /home/user/Downloads/install-tl-unx.tar.gz
         echo " go to the unzipped directory and install it manually, process will take more than 2 hours!"
+        # add path after installed, add below to /etc/bash.bashrc 
+        #These 3 lines below are related to TEXLIVE (added by YOU on dd/mm/yy)
+        #PATH=/usr/local/texlive/2016/bin/x86_64-linux:$PATH; export PATH
+        #MANPATH=/usr/local/texlive/2016/texmf-dist/doc/man:$MANPATH; export MANPATH
+        #INFOPATH=/usr/local/texlive//2016/texmf-dist/doc/info:$INFOPATH; export INFOPATH 
+        # create /etc/manpath.config if it is not exist and add 
+        #MANPATH_MAP /usr/local/texlive/2015/bin/x86_64-linux /usr/local/texlive/2016/texmf-dist/doc/man 
     fi
 else
     echo "latex live has been installed!\n"
