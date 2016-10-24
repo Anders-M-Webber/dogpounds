@@ -27,6 +27,11 @@ Plugin 'scrooloose/nerdcommenter'
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" Besides using Vundle for pluins, there are some that being copied to "~/.vim/plugin/" directly
+" find all plugins that cannot use Vundle in scsw.sh
+" list here also: https://github.com/xuhdev/vim-latex-live-preview
+
 filetype plugin indent on    " required
 
 

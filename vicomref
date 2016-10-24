@@ -107,7 +107,7 @@ gUU     # change current line to upper case
 3gUU    # change below 3 lines from current to upper case 
 guu     # change current line to lower case
 gUw     # change current word to upper case
-guw     # change curretn wordd to lower case
+guw     # change current word to lower case
 
 gq      ---  to split long lines into multiple lines each containing
             ‘textwidth’ option number of characters per line.
