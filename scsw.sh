@@ -10,6 +10,7 @@ if [ "archlinux" == "$LINUX_DIS" ];then
 elif [[ "ubuntu" == "$LINUX_DIS" || "debian" == "$LINUX_DIS" ]];then
     INSTALLCOM="sudo apt-get install"
     INSTALLUPDATE="sudo apt-get update"
+    INSTALLREP="sudo add-apt-repository"
 else  # for fedora/redhat
     INSTALLCOM="yum install"
 if
@@ -105,7 +106,6 @@ if [ -z "$(echo `which terminator`)" ];then
     read terminatorinstall
 
     if [ "YES" == "$terminatorinstall" ];then
-        #sudo apt-get install terminator 
         $INSTALLCOM terminator
     fi
 else
@@ -118,10 +118,13 @@ if [ -z "$(echo `which notepadqq`)" ];then
     read notepadqqinstall
 
     if [ "YES" == "$notepadqqinstall" ];then
-        #sudo add-apt-repository ppa:notepadqq-team/notepadqq
-        #sudo apt-get update
-        #sudo apt-get install notepadqq
-        $INSTALLCOM notepadqq
+        if [ "archlinux" == "$LINUX_DIS" ];then
+            $INSTALLCOM notepadqq
+        else #ubuntu
+            $INSTALLREP pppa:notepadqq-team/notepadqq
+            $INSTALLUPDATE
+            $INSTALLCOM notepadqq 
+        fi
     fi
 else
     echo "notepadqq has been installed!\n"
@@ -133,14 +136,11 @@ if [ -z "$(echo `which git`)" ];then
     read gitinstall
 
     if [ "YES" == "$gitinstall" ];then
-        #sudo add-apt-repository ppa:git-core/ppa
-        #sudo apt-get update
-        #sudo apt-get install git-all
-     #   $INSTALLCOM git-all
-        #for archlinux, use this 
         if [ "archlinux" == "$LINUX_DIS" ];then
             $INSTALLCOM git tk tcl
-        else
+        else #ubuntu
+            $INSTALLREP ppa:git-core/ppa
+            $INSTALLUPDATE
             $INSTALLCOM git-all
         fi
     fi
