@@ -165,8 +165,8 @@ if [ -z "$(echo `which pdflatex`)" ];then
 
     if [ "YES" == "$latexinstall" ];then
         echo " download it from "https://www.tug.org/texlive/acquire-netinstall.html""
-        wget -o /home/user/Downloads/install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-        tar xvzf /home/user/Downloads/install-tl-unx.tar.gz
+        wget -o $HOME/Downloads/install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        tar xvzf $HOME/Downloads/install-tl-unx.tar.gz
         echo " go to the unzipped directory and install it manually, process will take more than 2 hours!"
         # add path after installed, add below to /etc/bash.bashrc 
         #These 3 lines below are related to TEXLIVE (added by YOU on dd/mm/yy)
