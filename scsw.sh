@@ -136,7 +136,13 @@ if [ -z "$(echo `which git`)" ];then
         #sudo add-apt-repository ppa:git-core/ppa
         #sudo apt-get update
         #sudo apt-get install git-all
-        $INSTALLCOM git-all
+     #   $INSTALLCOM git-all
+        #for archlinux, use this 
+        if [ "archlinux" == "$LINUX_DIS" ];then
+            $INSTALLCOM git tk tcl
+        else
+            $INSTALLCOM git-all
+        fi
     fi
 else
     echo "git all has been installed!\n"
