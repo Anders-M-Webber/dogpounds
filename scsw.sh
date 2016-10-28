@@ -219,7 +219,7 @@ fi
 
 
 if [ "ArchLinux" == "LINUX_DIS" ];then
-    echo "steps to change behavior of alt+tab"
+    echo "(14) steps to change behavior of alt+tab"
     echo "1. terminal-> open "dconf-editor",
         2. go to org/gnome/desktop/wm/keybindings
         3. move '<Alt>Tab' from switch-applications to switch-windows
@@ -228,8 +228,33 @@ if [ "ArchLinux" == "LINUX_DIS" ];then
         6. alt+f2, r   to restart gnome" 
 fi
 
+if [ -z "$(echo `which lftp`)" ];then
+    echo "(15) lftp is not installed in the system, install it (YES)?"
+    read lftpinstall
 
+    if [ "YES" == "$lftpinstall" ];then
+        $INSTALLCOM lftp
+    fi
+else
+    echo "lftp has been installed!\n"
+fi
 
+if [ -z "$(echo `which ssh`)" ];then
+    echo "(16) openssh is not installed in the system, install it (YES)?"
+    read opensshinstall
+
+    if [ "YES" == "$opensshinstall" ];then
+        $INSTALLCOM openssh 
+    fi
+else
+    echo "openssh has been installed!\n"
+    echo "usage: lftp -u weining,Erl12345$ 10.1.10.105 -e "set ssl:verify-certificate no""
+fi
+
+if [ "ArchLinux" == "LINUX_DIS" ];then
+    echo "(17) install bash completion"
+    $INSTALLCOM bash-completion
+fi
 
 
 
