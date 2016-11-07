@@ -237,6 +237,7 @@ if [ -z "$(echo `which lftp`)" ];then
     fi
 else
     echo "lftp has been installed!\n"
+    echo "usage: lftp -u weining,Erl12345$ 10.1.10.105 -e "set ssl:verify-certificate no""
 fi
 
 if [ -z "$(echo `which ssh`)" ];then
@@ -248,13 +249,18 @@ if [ -z "$(echo `which ssh`)" ];then
     fi
 else
     echo "openssh has been installed!\n"
-    echo "usage: lftp -u weining,Erl12345$ 10.1.10.105 -e "set ssl:verify-certificate no""
 fi
 
 if [ "ArchLinux" == "LINUX_DIS" ];then
     echo "(17) install bash completion"
     $INSTALLCOM bash-completion
 fi
+
+if [ "ubuntu" == "LINUX_DIS" ];then
+    echo "(18) install gparted, which is used to change partitions size"
+    $INSTALLCOM gparted 
+fi
+
 
 
 

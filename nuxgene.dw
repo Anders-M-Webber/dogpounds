@@ -1,0 +1,18 @@
+----------------------ubuntu------------
+
+1. “Unmet Dependencies” problem when trying apt-get install.
+    -  a
+        It's possible that the "No space left on device" error is related to the "unmet dependencies" problem.
+    -  b (works)
+    sudo dpkg --configure -a
+    sudo apt-get update && sudo apt-get -f install
+
+2. increase the size of partitions.
+
+    -a. vmware to expand the size of the partition.
+    -b. add "bios.bootDelay = "5000" (no quotes) to vmware's vmx file
+    -c. vmware setting-> cd/dvd -> select "iso" and  "connect when power on"
+    -d. poweron vmware, press F2, bios, boot, move "cd rom" to 1st place, save and exit
+    -e. select "lunch ubuntu but without installing"
+    -f. sudo gparted
+    -g. drag size to you want, apply.
