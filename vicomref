@@ -281,6 +281,35 @@ Ctrl+Shift+PageUp     # Swap tab position with previous Tab
     Ctrl+Shift+  Left
     Ctrl+Shift+  Right
 
+---------------------vim diff--------------------------------------------------------------------
+
+vimdiff file1 file2  [file3 [file4]] # vim -d file1 file2 [file3 [file4]]
+:diffsplit file2        # if opened file1，then it can open and diff file2
+:diffthis               #if opened two files, then diff them
+vimdiff -o/-d           # horizontally/vertically split screen
+
+]c                      #   - Jump to the next change.
+[c                      #   - Jump to the previous change.
+
+do                      #diffget obtain, replace current with the other window
+dp                      #（diff "put"）replace other window with current 
+
+63diffg(et)             #to get line 63 from the other viewport, if this does not wrok, just copy - paste 
+                
+diffu[pdate]            #redo the diff if you make a non-trivial change to a line, or :e %
+set scrollbind          #To get both files scrolling at the same time
+                    
+:set list               #show whitespace, End of lines show as ‘$’ and carriage returns usually show as ‘^M’.
+
+ctrl-w,r                # exchange the position of up/down, left/right windows
+:diffsplit file         # open a new wind and load file to do diff
+vert diffsplit file     # open a new window vertically and load file to do diff
+
+Ctrl-w Ctrl-w           #switches windows
+Ctrl-w =                #   makes the two windows equal width
+CTRL-w <                #to make the left window one column smaller. 
+CTRL-W 5>               #to make the right window 5 columns smaller.
+
 <-----------------system terminal ------------------------>
 ctrl+w -            #   decrease font size
 ctrl+shift +        #   increase font size
@@ -303,16 +332,20 @@ eog xx.jpg          # to open image
 
 Ctrl + a            ：jump to the beginning of line
 Ctrl + e            ：jump to the end of line
-Ctrl + f            ：move right character 
-Ctrl + b            ：move left character
 Alt + f             ：move right wordly
 Alt + b             ：move left wordly
+
+Ctrl + w            ：del to word beginning from current
+Alt + d             ：del to word end from current
+
+
 Ctrl + xx           ：move between current character and beginning of line
+
+Ctrl + f            ：move right character 
+Ctrl + b            ：move left character
 
 Ctrl + u            ：del to line beginning from current
 Ctrl + k            ：del to line end from current
-Ctrl + w            ：del to word beginning from current
-Alt + d             ：del to word end from current
 
 Ctrl + d            ：del current character
 Ctrl + h            ：del character before
