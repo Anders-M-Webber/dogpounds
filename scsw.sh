@@ -261,7 +261,10 @@ if [ "ubuntu" == "LINUX_DIS" ];then
     $INSTALLCOM gparted 
 fi
 
+    echo " install audio editor tool Audacity"
+    $INSTALLCOM audacity   
 
-
+    echo " install text browser tool elinks"
+    $INSTALLCOM elinks   
 
 echo "All set!!!"

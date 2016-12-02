@@ -20,9 +20,11 @@ Plugin 'c.vim' " use to edit c file by inserting (){}comments, etc
 Plugin 'snipMate' " to expand for to for(....)
 Plugin 'Syntastic' " use to check syntax error
 Plugin 'Mark' " use to highlight marks, i.e., multiply keywords can be highlighted
-Plugin 'vim-scripts/Conque-GDB'
+"Plugin 'vim-scripts/Conque-GDB'
 Plugin 'scrooloose/nerdcommenter'
-
+Plugin 'yonchu/accelerated-smooth-scroll'
+Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-cursors
+Plugin 'xuhdev/vim-latex-live-preview'
 
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
