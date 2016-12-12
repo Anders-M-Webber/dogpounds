@@ -10,9 +10,18 @@
 2. increase the size of partitions.
 
     -a. vmware to expand the size of the partition.
-    -b. add "bios.bootDelay = "5000" (no quotes) to vmware's vmx file
-    -c. vmware setting-> cd/dvd -> select "iso" and  "connect when power on"
-    -d. poweron vmware, press F2, bios, boot, move "cd rom" to 1st place, save and exit
-    -e. select "lunch ubuntu but without installing"
+        turn off the vm -> manage -> vm settings -> hard disk
+        -> there is a "expand" at the right corner of the right side
+        -> click then make the right space you need.
+    -b. add "bios.bootDelay = "5000" " (no quotes) to vmware's vmx file
+    -c. vmware setting-> cd/dvd -> select "ubuntu-xx.iso" (or "gparted-xx.iso") and  "connect when power on"
+    -d. poweron vmware, press F2, bios, boot, change boot order by moving "CD ROM" upto the 1st place, F10 to save and exit
+    -e. select "lunch (or try) ubuntu but without installing", when VM on, open a terminal
     -f. sudo gparted
-    -g. drag size to you want, apply.
+        if the "unlocated partitions" is just close to the sda1, then drag size to you want, apply.
+
+        if there is a sda2 in between then you cannot drag/change the size to use the "unlocated partitions",
+            solution:  merge/resize the sda2 into the "unlocated partitions" -> 
+                        -> split the sda2 to the right end and the "unlocated partitions" to the left
+                        -> drag the sda1 to "unlocated partitions"
+    -g. reboot, change the boot order back.
