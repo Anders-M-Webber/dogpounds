@@ -1,0 +1,367 @@
+====git svn ========================
+-2. git shortlog [--all] -sn[e]    # to list all authors, e for emails
+
+-1. git config --global color.ui auto  ###configuration to show colour
+
+0. check out from repository ( to download the source code/project)
+####### !!!!!   you might clone the whole up level directory of project so that you can change branches easily
+
+    git svn clone svn+ssh://user@10.1.10.xxx/home/svn/repository/projectname --stdlayout
+    git svn clone svn+ssh://user@10.1.10.xxx/home/svn/repository/projtectname/branches/  --stdlayout
+
+####### argurments
+
+    git svn clone -s -r 40000:HEAD https://svn.parrot.org/parrot
+
+    -s      is for --stdlayout which presumes the svn recommended layout for tags, trunk, and branches.
+    -r      is for the revision to start taking history from. If you want to include all of the history, 
+            just leave that option off, but it will take a very long time, and you really don't need all of it. 
+                                                                            
+1. to show current branch
+
+    git branch           #existing branches are listed and the current branch will be highlighted with an asterisk.
+    git branch -a         # to list all branches on repository   ### or gitk --all
+    git branch -av        #list all branches and what they point to
+    git show-ref        # to list all reference number
+    git branch -r       #shows remote branches ONLY.
+or   git rev-parse --abbrev-ref HEAD
+or   git symbolic-ref HEAD
+or   git status
+
+    git branch -d new-branch-name    #Delete a branch locally
+    git branch -D {the_local_branch}   #To remove a local branch from your machine
+    git push origin :{the_remote_branch}   #To remove a remote branch from the server
+
+2. to show a file in an old commit
+
+    git show 2c7cf:my_file.txt > /home/../../xxx.txt
+
+
+3. to switch branches
+
+    git checkout branch_name
+    git checkout -b branch_name
+    git checkout trunk
+
+4. to generate diff file
+
+    git diff --no-prefix > ticketid.diff
+
+#to use the below to exclude CMakexxxxx.txt in the diff file
+
+    git diff --no-prefix `git status -s | grep -v CMakexxxxx.txt | cut -b4-` > test.diff
+
+    git diff --cached   # See staged, non-commited changes
+
+5. check in process (need do below all)
+
+### download a clear code 
+    git svn fetch       # to get the commits for all branches that exist in your clone
+    git svn rebase      #  To bring your tree up to date in general, like svn update, it contains "fetch"
+
+## if some local files are dirty , you can do below to clean the old modification, before this, you might backup,
+    git reset --hard HEAD   # to reverse, do "git svn rebase" again
+
+### hack, hack, hack
+
+    !!!! if to use "git gui"
+## click the blue icon of files you want to commit, then the files will go to "Staged changes(Will Commit)"
+## then add commit in the "Commit Message", like
+## [RN] Fix for "xxxxxxxxxxxxxxxxx ticket name".[/RN] to "add you explanation/comments here" (no quotes)
+## then click "commit"
+
+    !!!! or if to use commands
+## git add file1 file2 ... filex
+    or # git add -i file1  to add file in interactive mode
+## git commit -m "[RN] Fix for "xxxxxxxxxxxxxxxxxxxxxx ticket name".[/RN] to ..."
+
+
+### !!! when you have to cancel this commit, you might
+    git reset HEAD~1    #### Remove the latest git commit which has not been pushed
+### or git reset --hard HEAD^
+### or git reset --hard trunk
+#### !!!!you can modify commits before you push them up to the SVN server. e.g., you've made 10 commits to your local git repository, 
+    but you want it to look like two when it gets pushed up to SVN.  see http://trac.parrot.org/parrot/wiki/git-svn-tutorial
+    git rebase -i HEAD~10
+
+
+#### before do the final dcommit, you might check what is going to happen by using,
+
+    git svn dcommit     #push up to the svn server
+
+#if errors/conflicts, (e.g., CMakexxxxx.txt) happen, then do   
+    git checkout HEAD -- CMakexxxxx.txt
+#then again,
+    git svn dcommit
+
+#if you forget to commit one file accidently, or if the error is that some files "xxxx: needs update", which means these files also should be updated,
+    git gui -> "amend last commit" -> add these files to last commit.
+
+    git svn rebase  # To bring your tree up to date in general
+
+
+
+
+6. ------cherry-pick (pick one commit from trunk/other branch and then commit it onto a different branch_a)---------
+
+    Command lines ONLY:
+    git checkout branch_a    # need to checkout the branch need to commit onto
+    git svn fetch
+    git svn rebase
+### otherwise, has to    # git reset --hard HEAD 
+    git log         # to find the commit hash (first 6 digits, i.e., aaba2d)
+    git cherry-pick aaba2d
+    git svn dcommit
+
+
+    to undo a cherry-pick: (## git reset does NOT work)
+    git cherry-pick --abort  or ### git checkout branch_a 
+
+    to cherry-pick (git version should be newer than 1.7.1) multiple commits (i.e. commits from 62ecb3 to 76cada onto mib2_clu4):
+        git checkout branch_a 
+        git svn fetch
+        git svn rebase
+
+        git cherry-pick 62ecb3^..76cada   #62ecb3 should be older than 76cada, If they're the wrong order the command will silently fail
+                                        #if not include 62ecb3 then do not use ^
+
+
+        For gui ONLY (from truck to branch_a):
+            git checkout branch_a   #the commit is on truck already
+            git svn fetch
+            git svn rebase
+            gitk --all
+            click "branch_a (text)" -> right click -> "create new branch"->name it like "hello"->"check out this branch" 
+            find "trunk" -> [RN] fix for ... -> right click -> "cherry-pick this commit"
+            git svn dcommit
+
+            to revert the cherry-pick:
+            git cherry-pick --abort    # ONLY available at git version 1.7.8. otherwise
+            git reset --merge    #git reset --hard 
+
+
+7. -----------to commit some files and save previous work-----------
+            use "git gui" to commit the files first, then
+            git stash     # to save modified files expect for the files committed already.
+            git svn dcommit
+            git stash pop  # means "git stash apply" and "git stash drop", to recover the modified files back
+
+8. -----------to save current work and change to other branch-----------
+# e.g. you have modified files on Trunk, but you need work on v1.3.55AU_NAR right away, and you 
+# need save your current modification then back to trunk to continue
+
+            git stash    #to save all modifications
+            git checkout tags/v1.3.55AU_xxx     #change to different branch, then you can work on it.
+
+#after finish , you can change it back to trunk then continue to work on it 
+            git checkout trunk  
+            git stash pop   # get all changes back.../..
+
+9.   ------------to merge your current modification onto the latest trunk---
+## e.g. you have modified files on current trunk, but after having new commits on trunk, 
+## you might want to continue working on your modification on latest trunk
+
+            git stash
+            git svn rebase
+            git stash pop
+
+            ---stash then modify then pop----
+
+            git stash
+            ---hack, hack
+            ---git svn rebase !!!!!! merge problem, 
+            ---git stash pop  !!!!!! same merge problem, like "cmakelists.txt"
+            ---need to reset the modifications
+
+            git checkout HEAD -- filename
+
+            git stash pop
+
+10. -------------------------------to generate diff on one certain commit--------
+            git diff 21dc661f596d4555b8471d9c149b19286fa0d975 dc92a53ce220716822cd530a0631725bb9826282 > hello.diff
+
+            git log -p -1 filename  > xxx.diff           # to compare one file only
+
+git diff commit_hash -- path/to/file          #Git diff a file with another revision (or branch)
+    git diff -- path/to/file          #Git diff a file with current 
+
+11. -----------revert/delete a commit locally------
+    git revert --no-edit shadid(3211b, only need 1-6th digits) #find this ID by looking at gitk
+
+    ----------undo revert----------
+    git reset --hard HEAD^   #the ^ is every important, HEAD is the most recent commit on the current branch
+# HEAD^ is the commit before that on the current branch.
+
+
+12. -------------checkout code by date/time--------------
+#git checkout 'master@{2015-08-18 18:30:00}'      #git-rev-parse
+
+    git checkout `git rev-list -n 1 --before="2015-10-01 18:00" trunk`   #trunk (mater for git), you can change trunk to mib2_clu6
+
+    git checkout trunk   ######update to the latest code
+
+13. ---------------------patch diff-------------
+###  apply patch file to your current code, i.e. ../gemib
+
+    ( if generate patch file like this,     git diff --no-prefix > hello.patch, then should use " -p0" )
+    $ patch -p0 < hello.patch
+
+    ( if generate path file liek this (no "--no-prefix",    git diff > hello.patch, then should use " -p1" )
+      $ patch -p1 < hello.patch
+
+# if you see the message of "can't find file to patch at input line xxx", then, try to go to the SUB-dirctory
+# where the file is, for exmaple, you see the message when the patch file is "route/RouteFlag.cpp"
+
+#### ~/../gemib$ patch -p0 < patchfile.diff
+#### error message !!!!!!
+#### then should go to the "route/" directory,
+#### ~/../gemib/route$ patch -p0 < patchfile.diff
+
+
+####reverse the patch.
+      $git reset --hard HEAD    // or try $ patch -R -p0 < hello.patch (might not work)!!!!!!!
+
+14. -------------------git svn get commit by using revision number--------
+      tig --grep="@10674"    #  or  
+      git log --grep="@10674"
+
+15. -------------------git grep in commit log ONLY-----------------
+
+    git log -p    # hit '/' for search mode, if the first search is not relevant hit 'n' for next (like in vim ;) )
+    or   git log -Ghello    #will list all matches any line that was added, removed, or changed
+    or   git rev-list --all | git grep "hello"   #list all lines but no commit message information
+
+16. ------------- to revert a commit that has been pushed to remote repository---------
+    git revert hashid // 7217c8, after this, a windown is open for you to change the comments.
+    git svn dcommit   // push to reprohistory and history will show the revertion
+
+    --- git revert --no-commit <commit hash>     //use only when you don't want to change comments.
+
+17. others
+
+    git log --grep "<pattern>"    ##只显示提交记录里包含指定<pattern>文字的提交。
+    git cherry-pick "<commit>" [  ## 把指定<commit>的提交复制到现在的分支。
+
+    gitk filename.cpp ## show history of the filename
+    git log -p filename.cpp  ##same as above
+    git log --follow -p filename.cpp ## show entire history even the filename was changed
+
+
+    git add -i file4 # if you only want to add some diff hunks and not others
+
+    git commit "[RN] Fix for "xxxxxxxxxxxxxxxxxxxxxx".[/RN]" to xxxxxxxxxxxxxxxxxxxx 
+    git commit --amend -m "New commit message"  ###Change message of last commit
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+    git log -p -2 ########## -p show diff, -2 the latest 2 times
+    git log --stat    ###### show file names and lines briefly
+    git log --author-xxx   ### show author only
+
+
+    git log --all --grep='Build 0051'    ####To search the commit log (across all branches) for the given text:
+
+    git grep 'Build 0051' $(git rev-list --all)   ## To search the actual content of commits through a repo's history, use:
+
+---------------------------------------------------more tips about stash---------
+    if did "git reset" after "git stash pop" and need the changes to come back,
+1. if you did not close the terminal, then look at the output form "git stash pop",
+    #git stash pop
+    [....]
+    Dropped refs/stash@{0} (2ca03e...........................)
+
+    to get the stash back, run "git branch tmp 2cae03e", then get it as a branch,
+    to convert it to "git stash apply tmp", "git stash"
+2. if you closed the terminal, 
+    git fsck --no-reflog | awk '/dangling commit/ {print $3}'
+    or   gitk --all $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
+    then look for the message, "WIP on trunk(or xxxxbranch): 10ac1af [RN]...commithash some old commit message"
+    then "git stash apply $stash_hash"
+    ---------------------------------------------------------------------   
+
+    ----> if git changed ip, then
+    git remote set-url origin weining@10.1.10.109:/home/git/gemib
+
+    ----> push all local to the server
+    git push origin --all
+
+    ---> show url
+    git remote show origin
+
+    ----------------------------->>>>>>>>>>>>>> svn command-------------------------------------------------------------
+
+    svn update/up
+    svn checkout/co    # svn checkout svn+ssh://weining@10.1.10.109/home/svn/repository/streetview
+    svn commit/ci
+    svn add file/folder  (then "svn commit")
+    svn mv old_file_name new_file_name
+    svn revert
+svn resolved file (if conflict->xx-> resolved->ci)
+    svn log
+- svn log -v -l 4 (-v=--verbose -l=--limit 4=4entries)
+    - svn log -r 1:HEAD (list everything in ascending order)
+    - svn log -r HEAD:1 ( list everything in descending order)
+    - svn log -r {2011-02-02}:{2011-02-03} 
+    - svn log -v -r <revisionnumber>
+    - svn diff -r xx:yy filename
+    - svn diff --summarize -c 7400 
+
+    svn info
+    svn status (
+            ? - 是新的檔案，不在SVN裡
+            A - 新增的檔案
+            C - 檔案跟SVN的不同，合併失敗，要手動處理
+            D - 移除的檔案
+            M - 有修改過
+            U - 有更新
+            G - 跟SVN上的檔案不同，但合併成功。
+            )
+svn export  (no .svn)
+
+
+
+    =================================>>>>>>>>>>>>>>>>>>>>>>>>>> tig===============
+    1. to review history of a file
+    tig filename
+    press "t" on a commit in the history view, will open the tree view and browse the content of repository
+
+    tig status   ## or shift-S
+
+    2. to display branch
+    tig [branchname]
+    tig --all       ## for all branches
+
+    q       ##close the current view
+    qq      ## close tig
+
+    3. search "copyright" using grep ----------->
+
+    tig --grep=copyright
+
+
+
+    <<<<<<<<<<<<<<<<<<<<--------------------------------------------------------
+
+
+
+---------------------git only-----------
+
+#########cherry-pick==========
+    git checkout mib2/cluster7
+    git fetch
+    git rebase
+    git cherry-pick a77ca2
+
+    !!!! conflict!!!
+    - git mergertool    # to resolve the conflict issue
+
+    !!!!or - git cherry-pick --abort
+
+
+    git push
+    ========  to create code review branch (work branch) ########
+
+    ================= hisotory file---
+    tig /pahttofile
+    gitk /pahttofile
+
+
