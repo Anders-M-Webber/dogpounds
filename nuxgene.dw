@@ -25,3 +25,45 @@
                         -> split the sda2 to the right end and the "unlocated partitions" to the left
                         -> drag the sda1 to "unlocated partitions"
     -g. reboot, change the boot order back.
+
+ 
+
+
+
+
+ ----------------------------General tool / commands --------------
+
+ > tar -cvzf xxx.tar.gz path/to/file     # compress path/to/file (entire directory or single file) to xxx.tar.gz
+    # -c: Create an archive.
+    # -z: Compress the archive with gzip.
+    #  -v: Display progress in the terminal while creating the archive, also known as “verbose” mode. The v is always optional in these commands, but it’s helpful.
+    #  -f: Allows you to specify the filename of the archive.
+
+ > tar -cvzf xxx.tar.gz path/to/fileordirectory1 path/to/fileordirectory2 ...      # compress multiple directoris or/and files to xxx.tar.gz
+
+ > tar -czvf archive.tar.gz /home/ubuntu --exclude=/home/ubuntu/Downloads --exclude=/home/ubuntu/.cache  # compress but exclude "Downloads and .cache"
+
+ > tar -czvf archive.tar.gz /home/ubuntu --exclude=*.mp4
+
+ > tar -cjvf archive.tar.bz2 stuff
+
+ > tar -xzvf archive.tar.gz -C /tmp  # uncompress/extract archive.tar.gz to /tmp directory
+
+
+> grep and find 
+
+grep -rin keyword *    ; n shows line num, i ignore case, r means recursively  * is directory
+
+grep -r –include=”*.[ch]” NGX_HTTP_VAR_INDEXED src/
+# grep -rw class --exclude-dir={asi,cu,dsi,etc,imports,include,lib,login,mapdata,messaging,models,persistence,picnav,prefetch,res,route,scritps,shaders,style,traffic,util,zoom} *
+
+//asterisk "*" does not mean the same thing in regular expression as in wildcard,
+//it is a modifier that applies to the preceding single characters or expression
+
+grep -rin '[a-z]*_cast' *       // search "*_cast" as glob or
+grep -rin -E '*_cast' *         // or egrep -rin '*_cast' *
+
+------> find and remove--->
+
+find . -name "FILE-TO-FIND" -exec rm -rf {} \;
+##### -exec rm -rf {} \; : Delete all files matched by file pattern.
