@@ -281,6 +281,16 @@ Ctrl+Shift+PageUp     # Swap tab position with previous Tab
     Ctrl+Shift+  Left
     Ctrl+Shift+  Right
 
+---------------------spell checking---------------------------------------------------
+:set spell spelllang=en_us
+:setlocal spell spelllang=en_us    # only for the current buffer
+:set nospell
+
+]s   # move to next misspell
+[s   # move to previous one
+
+z=   # list all alternatives
+
 ---------------------vim diff--------------------------------------------------------------------
 
 vimdiff file1 file2  [file3 [file4]] # vim -d file1 file2 [file3 [file4]]
