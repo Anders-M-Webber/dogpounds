@@ -20,7 +20,7 @@
     -f. sudo gparted
         if the "unlocated partitions" is just close to the sda1, then drag size to you want, apply.
 
-        if there is a sda2 in between then you cannot drag/change the size to use the "unlocated partitions",
+        if there is a sda2 in between then you cannot drag/change the size to use the "unlocated partitions",right click on the sd2 in the list
             solution:  merge/resize the sda2 into the "unlocated partitions" -> 
                         -> split the sda2 to the right end and the "unlocated partitions" to the left
                         -> drag the sda1 to "unlocated partitions"
