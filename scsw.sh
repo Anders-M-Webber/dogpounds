@@ -12,16 +12,14 @@ elif [[ "ubuntu" == "$LINUX_DIS" || "debian" == "$LINUX_DIS" ]];then
     INSTALLCOM="sudo apt-get install"
     INSTALLUPDATE="sudo apt-get update"
     INSTALLREP="sudo add-apt-repository"
-    echo "the system is Ubuntu"
+    echo "the system is Ubuntu !"
 else  # for fedora/redhat
     INSTALLCOM="yum install"
-    echo "the system is RH"
+    echo "the system is RH !"
 if
 
 VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
 LIVELATEXPREVIEW="$HOME/.vim/plugin/livelatexpreview"
-
-
 
 
 ## install vim
@@ -33,6 +31,8 @@ if [ -z "$(echo `which vim`)" ];then
     if [ "YES" == "$viminstall" ];then
         #sudo apt-get install vim
         $INSTALLCOM vim
+    else
+        echo "(1) is not installed !"
     fi
 else
     echo "(1) VIM has been installed!\n"
@@ -43,8 +43,10 @@ if [ ! -d $VIBUNDLEDIR ];then
     read bundleinstall
 
     if [ "YES" == "$bundleinstall" ];then
-#otherwise you can not use plugin management in vim
+#otherwise 
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    else
+        echo "(2) is not installed, you can not use plugin management in vim !"        
     fi
 else
     echo "(2) bundle (for Vim) has been cloned!\n"
@@ -58,6 +60,8 @@ if [ -z "$(echo `which ctags`)" ];then
     if [ "YES" == "$ctaginstall" ];then
         #sudo apt-get install ctags 
         $INSTALLCOM ctags
+    else
+        echo "(3) is not installed !"        
     fi
 else
     echo "(3) ctags has been installed!\n"
@@ -71,6 +75,8 @@ if [ -z "$(echo `which cscope`)" ];then
     if [ "YES" == "$ctaginstall" ];then
         #sudo apt-get install cscope 
         $INSTALLCOM cscope
+    else
+        echo "(4) is not installed !"        
     fi
 else
     echo "(4) cscope has been installed!\n"
@@ -85,6 +91,8 @@ if [ -z "$(echo `which ag`)" ];then
     if [ "YES" == "$aginstall" ];then
         #sudo apt-get install silversearcher-ag
         $INSTALLCOM silversearcher-ag
+    else
+        echo "(5) is not installed !"        
     fi
 else
     echo "(5) silver search (ag) has been installed!\n"
@@ -92,12 +100,14 @@ fi
 
 
 if [ -z "$(echo `which tig`)" ];then
-    echo "(6) tig is not installed in the system, install it (YES)?"
+    echo "(6) tig is not installed in the system, install it (YES) ...?"
     read tiginstall
 
     if [ "YES" == "$tiginstall" ];then
         #sudo apt-get install tig 
         $INSTALLCOM tig
+    else
+        echo "(6) is not installed !"
     fi
 else
     echo "(6) tig has been installed!\n"
@@ -105,11 +115,13 @@ fi
 
 
 if [ -z "$(echo `which terminator`)" ];then
-    echo "(7) terminator is not installed in the system, install it (YES)?"
+    echo "(7) terminator is not installed in the system, install it (YES)  ...?"
     read terminatorinstall
 
     if [ "YES" == "$terminatorinstall" ];then
         $INSTALLCOM terminator
+    else
+        echo "(7) is not installed !"
     fi
 else
     echo "(7) terminator has been installed!\n"
@@ -117,7 +129,7 @@ fi
 
 
 if [ -z "$(echo `which notepadqq`)" ];then
-    echo "(8) notepadqq is not installed in the system, install it (YES)?"
+    echo "(8) notepadqq is not installed in the system, install it (YES)  ...?"
     read notepadqqinstall
 
     if [ "YES" == "$notepadqqinstall" ];then
@@ -128,6 +140,8 @@ if [ -z "$(echo `which notepadqq`)" ];then
             $INSTALLUPDATE
             $INSTALLCOM notepadqq 
         fi
+    else
+        echo "(8) is not installed !"        
     fi
 else
     echo "(8) notepadqq has been installed!\n"
@@ -146,24 +160,28 @@ if [ -z "$(echo `which git`)" ];then
             $INSTALLUPDATE
             $INSTALLCOM git-all
         fi
+    else
+        echo "(9) is not installed !"        
     fi
 else
     echo "(9) git all has been installed!\n"
 fi
 
 if [ ! -d $LIVELATEXPREVIEW ];then
-    echo "(10) live-preivew-of-latex-in-vim is not installed in the system, install it (YES)?"
+    echo "(10) live-preivew-of-latex-in-vim is not installed in the system, install it (YES) - manually uncommnet out it ...?"
     read livelatexinstall
 
     if [ "YES" == "$livelatexinstall" ];then
         git clone https://github.com/xuhdev/vim-latex-live-preview.git ~/.vim/plugin/livelatexpreview
+    else
+        echo "(10) is not installed !"        
     fi
 else
     echo "(10) live latex preview (Vim plugin) has been cloned!\n"
 fi
 
 if [ -z "$(echo `which pdflatex`)" ];then
-    echo "(11) latex live is not installed in the system, install it (YES) - it may take 2 hours?"
+    echo "(11) latex live is not installed in the system, install it (YES) - it may take 2 hours - manually uncommnet out it ...?"
     read latexinstall
 
     if [ "YES" == "$latexinstall" ];then
@@ -184,6 +202,8 @@ if [ -z "$(echo `which pdflatex`)" ];then
         else # ubuntu
             $INSTALLCOM texlive-full
         fi
+    else # select not "YES"
+        echo "(11) is not installed !"        
     fi
 else
     echo "(11) latex live has been installed!\n"
@@ -192,7 +212,7 @@ fi
 
 
 if [ -z "$(echo `which java`)" ];then
-    echo "(12) Java  is not installed in the system, install it (YES)?"
+    echo "(12) Java  is not installed in the system, install it (YES) - manually uncommnet out it ...?"
     read javainstall
 
     if [ "YES" == "$javainstall" ];then
@@ -203,6 +223,8 @@ if [ -z "$(echo `which java`)" ];then
         else 
             echo "no installation find for ubuntu"
         fi
+    else
+        echo "(12) is not installed !"        
     fi
 else
     echo "(12) Java has been installed!\n"
@@ -210,11 +232,13 @@ fi
 
 
 if [ -z "$(echo `which yEd`)" ];then
-    echo "(13) yed graphic editor is not installed in the system, install it (YES)?"
+    echo "(13) yed graphic editor is not installed in the system, install it (YES) - manually uncommnet out it ...?"
     read yedinstall
 
     if [ "YES" == "$yedinstall" ];then
-        echo " download it from http://www.yworks.com/,32 or 64 bits\n"
+        echo "Manually download it from http://www.yworks.com/,32 or 64 bits\n"
+    else
+        echo "(13) is not installed !"        
     fi
 else
     echo "(13) yed has been installed!\n"
@@ -232,11 +256,13 @@ if [ "ArchLinux" == "LINUX_DIS" ];then
 fi
 
 if [ -z "$(echo `which lftp`)" ];then
-    echo "(15) lftp is not installed in the system, install it (YES)?"
+    echo "(15) lftp is not installed in the system, install it (YES) - manually uncommnet out it ...?"
     read lftpinstall
 
     if [ "YES" == "$lftpinstall" ];then
         $INSTALLCOM lftp
+    else
+        echo "(15) is not installed !"        
     fi
 else
     echo "(15) lftp has been installed!\n"
@@ -244,11 +270,13 @@ else
 fi
 
 if [ -z "$(echo `which ssh`)" ];then
-    echo "(16) openssh is not installed in the system, install it (YES)?"
+    echo "(16) openssh is not installed in the system, install it (YES/NO) ?"
     read opensshinstall
 
     if [ "YES" == "$opensshinstall" ];then
         $INSTALLCOM openssh 
+    else
+        echo "(16) is not installed !"
     fi
 else
     echo "(16) openssh has been installed!\n"
