@@ -7,12 +7,15 @@ LINUX_DIS="$(uname -a | awk -F " " '{print $2}')"
 
 if [ "archlinux" == "$LINUX_DIS" ];then
     INSTALLCOM="sudo pacman -Syyu"
+    echo "the system is ArchLinux !"
 elif [[ "ubuntu" == "$LINUX_DIS" || "debian" == "$LINUX_DIS" ]];then
     INSTALLCOM="sudo apt-get install"
     INSTALLUPDATE="sudo apt-get update"
     INSTALLREP="sudo add-apt-repository"
+    echo "the system is Ubuntu"
 else  # for fedora/redhat
     INSTALLCOM="yum install"
+    echo "the system is RH"
 if
 
 VIBUNDLEDIR="$HOME/.vim/bundle/vundle"
@@ -32,7 +35,7 @@ if [ -z "$(echo `which vim`)" ];then
         $INSTALLCOM vim
     fi
 else
-    echo "VIM has been installed!\n"
+    echo "(1) VIM has been installed!\n"
 fi
 
 if [ ! -d $VIBUNDLEDIR ];then
@@ -44,7 +47,7 @@ if [ ! -d $VIBUNDLEDIR ];then
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     fi
 else
-    echo "bundle has been cloned!\n"
+    echo "(2) bundle (for Vim) has been cloned!\n"
 fi
 
 
@@ -57,7 +60,7 @@ if [ -z "$(echo `which ctags`)" ];then
         $INSTALLCOM ctags
     fi
 else
-    echo "ctags has been installed!\n"
+    echo "(3) ctags has been installed!\n"
 fi
 
 
@@ -70,7 +73,7 @@ if [ -z "$(echo `which cscope`)" ];then
         $INSTALLCOM cscope
     fi
 else
-    echo "cscope has been installed!\n"
+    echo "(4) cscope has been installed!\n"
 fi
 
 
@@ -84,7 +87,7 @@ if [ -z "$(echo `which ag`)" ];then
         $INSTALLCOM silversearcher-ag
     fi
 else
-    echo "ag has been installed!\n"
+    echo "(5) silver search (ag) has been installed!\n"
 fi
 
 
@@ -97,7 +100,7 @@ if [ -z "$(echo `which tig`)" ];then
         $INSTALLCOM tig
     fi
 else
-    echo "tig has been installed!\n"
+    echo "(6) tig has been installed!\n"
 fi
 
 
@@ -109,7 +112,7 @@ if [ -z "$(echo `which terminator`)" ];then
         $INSTALLCOM terminator
     fi
 else
-    echo "terminator has been installed!\n"
+    echo "(7) terminator has been installed!\n"
 fi
 
 
@@ -127,7 +130,7 @@ if [ -z "$(echo `which notepadqq`)" ];then
         fi
     fi
 else
-    echo "notepadqq has been installed!\n"
+    echo "(8) notepadqq has been installed!\n"
 fi
 
 
@@ -145,7 +148,7 @@ if [ -z "$(echo `which git`)" ];then
         fi
     fi
 else
-    echo "git all has been installed!\n"
+    echo "(9) git all has been installed!\n"
 fi
 
 if [ ! -d $LIVELATEXPREVIEW ];then
@@ -156,11 +159,11 @@ if [ ! -d $LIVELATEXPREVIEW ];then
         git clone https://github.com/xuhdev/vim-latex-live-preview.git ~/.vim/plugin/livelatexpreview
     fi
 else
-    echo "live latex preview has been cloned!\n"
+    echo "(10) live latex preview (Vim plugin) has been cloned!\n"
 fi
 
 if [ -z "$(echo `which pdflatex`)" ];then
-    echo "(11) latex live is not installed in the system, install it (YES)?"
+    echo "(11) latex live is not installed in the system, install it (YES) - it may take 2 hours?"
     read latexinstall
 
     if [ "YES" == "$latexinstall" ];then
@@ -183,7 +186,7 @@ if [ -z "$(echo `which pdflatex`)" ];then
         fi
     fi
 else
-    echo "latex live has been installed!\n"
+    echo "(11) latex live has been installed!\n"
 fi
 
 
@@ -202,7 +205,7 @@ if [ -z "$(echo `which java`)" ];then
         fi
     fi
 else
-    echo "yed has been installed!\n"
+    echo "(12) Java has been installed!\n"
 fi
 
 
@@ -214,12 +217,12 @@ if [ -z "$(echo `which yEd`)" ];then
         echo " download it from http://www.yworks.com/,32 or 64 bits\n"
     fi
 else
-    echo "yed has been installed!\n"
+    echo "(13) yed has been installed!\n"
 fi
 
 
 if [ "ArchLinux" == "LINUX_DIS" ];then
-    echo "(14) steps to change behavior of alt+tab"
+    echo "(14) steps to change behavior of alt+tab - manually follow steps: "
     echo "1. terminal-> open "dconf-editor",
         2. go to org/gnome/desktop/wm/keybindings
         3. move '<Alt>Tab' from switch-applications to switch-windows
@@ -236,7 +239,7 @@ if [ -z "$(echo `which lftp`)" ];then
         $INSTALLCOM lftp
     fi
 else
-    echo "lftp has been installed!\n"
+    echo "(15) lftp has been installed!\n"
     echo "usage: lftp -u weining,Erl12345$ 10.1.10.105 -e "set ssl:verify-certificate no""
 fi
 
@@ -248,7 +251,7 @@ if [ -z "$(echo `which ssh`)" ];then
         $INSTALLCOM openssh 
     fi
 else
-    echo "openssh has been installed!\n"
+    echo "(16) openssh has been installed!\n"
 fi
 
 if [ "ArchLinux" == "LINUX_DIS" ];then
@@ -257,14 +260,16 @@ if [ "ArchLinux" == "LINUX_DIS" ];then
 fi
 
 if [ "ubuntu" == "LINUX_DIS" ];then
+echo "to install following sw, uncomment out them..."
     echo "(18) install gparted, which is used to change partitions size"
-    $INSTALLCOM gparted 
+#    $INSTALLCOM gparted 
+    
+     echo "(19) install audio editor tool Audacity"
+#    $INSTALLCOM audacity   
+
+    echo "(20) install text browser tool elinks, works Vim while browsering webs"
+ #   $INSTALLCOM elinks  
 fi
-
-    echo " install audio editor tool Audacity"
-    $INSTALLCOM audacity   
-
-    echo " install text browser tool elinks"
-    $INSTALLCOM elinks   
+   
 
 echo "All set!!!"
