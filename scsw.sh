@@ -167,6 +167,33 @@ else
     echo "(9) git all has been installed!\n"
 fi
 
+if [ -z "$(echo `which kermit`)" ];then
+    echo "(9-1) kermit is not installed in the system, install it (YES)?"
+    read gitinstall
+
+    if [ "YES" == "$gitinstall" ];then
+          $INSTALLCOM ckermit
+#settings, vim ~/.kermrc          
+#set line          /dev/ttyUSB0   
+#set speed         115200   
+#set carrier-watch off   
+#set handshake     none   
+#set flow-control none   
+#robust   
+#set file type     bin   
+#set file name     lit   
+#set rec pack      1000   
+#set send pack     1000   
+#set window        5
+
+#start, kermit -c
+    else
+        echo "(9-1) is not installed !"        
+    fi
+else
+    echo "(9-1) kemit all has been installed!\n"
+fi
+
 if [ ! -d $LIVELATEXPREVIEW ];then
     echo "(10) live-preivew-of-latex-in-vim is not installed in the system, install it (YES) - manually uncommnet out it ...?"
     read livelatexinstall
