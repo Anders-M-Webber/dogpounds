@@ -26,6 +26,8 @@ Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-cursors
 Plugin 'xuhdev/vim-latex-live-preview'
 
+"for Java
+Plugin 'artur-shaik/vim-javacomplete2'
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,7 +143,7 @@ let mapleader=","
 nnoremap <space> :
 vnoremap <space> :
 
-# <F8> is used as "Enter"
+" <F8> is used as "Enter"
 map <F8> o<ESC>
 " show function name in normal mode only
 " use current directory
