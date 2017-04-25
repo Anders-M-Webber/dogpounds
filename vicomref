@@ -34,7 +34,11 @@ dfx         --- cut content from current to x
 y2fx        --- copy content from current to the second x
 shift+p     ---- paste to previous line
 
-:%y        --- copy all
+:%y        --- copy all ( % to refer the next command to work on all the lines, +  to copy to the system clipboard )
+           --- or  gg"+yG
+
+ggVG       ---- (needs to be run on normal mode). This command only selects the whole text inside the document.
+
 
 # deletion    ------------->
 
@@ -152,6 +156,7 @@ g*/g#       --- go to the word contains current word
 g;          --- go to the previous modification
 g,          --- go to the next modification
 
+Ctrl ]      --- jump to the function defination
 
 # buffers   -------->
 
