@@ -101,6 +101,13 @@ Xp      # swap two characters current and previous
 ddp     # swap two lines
 ddkP or ddkkp    # Swap two lines current and previous
 
+dawwP         #Swap the current word with the next
+dawelp             # Swap the current word with the next
+hdeep             #Swap the current word with the next   (works at start of first word, useful if your separators aren't spaces)
+"xdiwdwep"xp       #Swap the current word with the next  (works with most punctuations too)
+
+dawbP   #Swap the current word with the previous
+
 
 ~       # change to upper/lower case
 3~      # change 3 characters from current to upper/lower case
