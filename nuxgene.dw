@@ -67,3 +67,19 @@ grep -rin -E '*_cast' *         // or egrep -rin '*_cast' *
 
 find . -name "FILE-TO-FIND" -exec rm -rf {} \;
 ##### -exec rm -rf {} \; : Delete all files matched by file pattern.
+
+
+---------> kermit
+ sudo apt-get install ckermit 
+ 
+ gedit  ~/.kermrc
+ SET MODEM TYPE NONE
+ set line          /dev/ttyUSB0
+ IF FAIL EXIT 1 "Device not available"
+set speed         115200   
+set carrier-watch off   
+set handshake     none   
+set flow-control none   
+
+sudo chmod 777 /dev/ttyUSB0 
+udevadm monitor --udev   # to detect new usb devices, need to unplug and plug
