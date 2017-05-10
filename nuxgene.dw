@@ -7,23 +7,34 @@
     sudo dpkg --configure -a
     sudo apt-get update && sudo apt-get -f install
 
-2. increase the size of partitions.
+2. increase the size of partitions after ubuntu installed.
 
-    -a. vmware to expand the size of the partition.
+    -a. open vmware to expand the size of the partition.
         turn off the vm -> manage -> vm settings -> hard disk
-        -> there is a "expand" at the right corner of the right side
-        -> click then make the right space you need.
-    -b. add "bios.bootDelay = "5000" " (no quotes) to vmware's vmx file
-    -c. vmware setting-> cd/dvd -> select "ubuntu-xx.iso" (or "gparted-xx.iso") and  "connect when power on"
-    -d. poweron vmware, press F2, bios, boot, change boot order by moving "CD ROM" upto the 1st place, F10 to save and exit
-    -e. select "lunch (or try) ubuntu but without installing", when VM on, open a terminal
-    -f. sudo gparted
-        if the "unlocated partitions" is just close to the sda1, then drag size to you want, apply.
-
-        if there is a sda2 in between then you cannot drag/change the size to use the "unlocated partitions",right click on the sd2 in the list
-            solution:  merge/resize the sda2 into the "unlocated partitions" -> 
-                        -> split the sda2 to the right end and the "unlocated partitions" to the left
+        -> there is a "expand (expand disk capacity)" at the right corner of the right side
+        -> click then make the right space you need, e.g, expand 180G to 210G, input 210.
+        -> click "OK" and reboot vm.
+    -b. add "bios.bootDelay = "5000" " (no quotes) to vmware's "vmname.vmx" file
+    -c. Editing vmware setting-> cd/dvd -> select "use ISO image file" 
+        -> browse "gparted-xx.iso" and select "connect when power on"
+    -d. poweron vmware, press F2, bios, boot, change boot order by moving "CD ROM" upto the 1st place, 
+        then press F10 to save and exit
+    -e. May not work !!!!!, if you use "ubuntu-xx.iso", then 
+         select "lunch ubuntu" or "try ubuntu" or "lunch ubuntu but without installing",
+         when VM on, open a terminal "sudo gparted".
+    -f. if use "gparted-xx.iso", then press "enter" to select all by default,
+        -- if the "unlocated partitions" is just close to the sda1, then drag size to you want, apply.
+        -- if there is a sda2 in between "sda1" and "unallocated" then
+            you cannot drag/change the size to use the "unlocated partitions",
+            solution:  right click on the sd2 in the list,
+                        -> select "merge/resize", merge the sda2 into the "unlocated partitions"  
+                        -> click the new partition of "sda2+unallocated", select "resize/move"
+                        -> move the sda2 to the right end and the "unlocated partitions" to the left
+                        -> click the new partition of "unallocated+sda2", select "resize/move"
+                        -> SPLIT the "unallocated" seperate from the "sda2"
+                        -> click "sda1" and resize it to "sda1+unallocated"
                         -> drag the sda1 to "unlocated partitions"
+                        -> Apply
     -g. reboot, change the boot order back.
 
  
