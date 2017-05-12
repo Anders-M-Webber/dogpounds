@@ -94,3 +94,6 @@ set flow-control none
 
 sudo chmod 777 /dev/ttyUSB0 
 udevadm monitor --udev   # to detect new usb devices, need to unplug and plug
+
+-------------> gtkmit (may use sudo)
+---> check memory size:  sudo lshw -class memory
