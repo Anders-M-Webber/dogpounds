@@ -9,13 +9,14 @@ filetype off " required for Vundle management plugin
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim   "required
 call vundle#begin() "required
+" Pluginclean will delete unactived plugin and delete directory
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
 Plugin 'AutoComplPop'   " auto completion
 Plugin 'OmniCppcomplete'   " auto completion
 Plugin 'Tagbar' " to list the invoke struction of current file/code
 Plugin 'bling/vim-airline' " sugar for eyes -status line 
-Plugin 'flazz/vim-colorschemes' " use to change colorscheme but no use now
+"Plugin 'flazz/vim-colorschemes' " use to change colorscheme but no use now
 Plugin 'c.vim' " use to edit c file by inserting (){}comments, etc
 Plugin 'snipMate' " to expand for to for(....)
 Plugin 'Syntastic' " use to check syntax error
@@ -28,6 +29,8 @@ Plugin 'xuhdev/vim-latex-live-preview'
 
 "for Java
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'java.vim'
+
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -163,3 +166,29 @@ nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " " recreate tags file with F5
 "map <F5> :!ctags -R –c++-kinds=+p –fields=+liaS –extra=+q --language-force=c++ .<CR>
+
+"cscope
+function! LoadCscope()
+    let db = findfile("cscope.out", ".;")
+    :echom db
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        :echom path
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+    endif
+endfunction
+au BufEnter /* call LoadCscope()
+""tags
+set autochdir
+set tags=tags;
+"
+nmap <leader>cs : cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cg : cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cc : cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cd : cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>ct : cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>ce : cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cf : cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader>ci : cs find i ^<C-R>=expand("<cfile>")<CR>$<CR> 
