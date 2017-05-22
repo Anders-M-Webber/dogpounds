@@ -30,6 +30,7 @@ Plugin 'xuhdev/vim-latex-live-preview'
 "for Java
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'java.vim'
+Plugin 'mhizn/startify.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
@@ -138,7 +139,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
 
-
+" for startify.vim to disable the cowboy quote
+let g:startify_custom_header = []
 
 " --------> set map leader etc
 let mapleader=","
