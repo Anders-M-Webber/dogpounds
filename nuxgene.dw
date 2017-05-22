@@ -60,6 +60,7 @@
 
  > tar -xzvf archive.tar.gz -C /tmp  # uncompress/extract archive.tar.gz to /tmp directory
 
+ > tar xf archive.tar.xz
 
 > grep and find 
 
