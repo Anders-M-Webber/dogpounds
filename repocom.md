@@ -24,7 +24,7 @@ repo forall -c git clean -dxf   # equally to !!!DELETE!!! whole repository (not 
 
 repo forall -c git clean -dxfn   # dry run, will show to-be-deleted files
 
-repo forall -vc "git reset --hard"    # to revert all changes
+repo forall -vc "git reset"    # to revert all changes
 
 repo forall ~/WORKING_DIRECTORY/frameworks/native/services/surfaceflinger/  -c  'git checkout .'   # restore changed files at directory
 
