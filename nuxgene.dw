@@ -98,3 +98,9 @@ udevadm monitor --udev   # to detect new usb devices, need to unplug and plug
 
 -------------> gtkmit (may use sudo)
 ---> check memory size:  sudo lshw -class memory
+
+-------------> Ubuntu to do nothing when close  laptop lid?
+sudo vim /etc/UPower/UPower.conf
+# Change IgnoreLid to IgnoreLid=true, save it
+service upower restart
+
