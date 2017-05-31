@@ -6,6 +6,19 @@
 #*   Time is flying, DogBug@copyleft 
 #****************************************************************    
 
+# colorize at Ubuntu ONLY
+OFFSET = \033[41G # add several tabs, not mandatory
+BLACK = \033[1;30m # 30 is black, 1 is highlight
+RED = \033[0;31m #  2 is turn off all attributes
+GREEN = \033[4;32m # 4 is underline
+YELLOW = \033[5;33m # 5 is blinking
+BLUE = \033[7;34m # 7 is show back
+PURPLE = \033[8;35m # 8 is hide
+CYAN = \033[1;36m 
+WHITE = \033[1;37m
+COLOR = \033[45;1;4;5;32m   # 45 is background color, 1 highlight, 4, 5, 32 is GREEN
+RESET = \033[0m  # without this, following line is also colorized
+CLEAR = \033[H\033[J    # clear screen, not used 
 
 # The PROGRAM macro defines the name of the project. It allows the project name to be changed.
 
@@ -47,11 +60,13 @@ all: $(PROGRAM)
 
     @echo "Done! You may run the $(PROGRAM)on the target now......"
     @echo "$(DATE)"
+# @if $(CC) $^ -o $@ $(CFLAGS); then echo "$(OFFSET)$(COLOR)[ OK ]$(RESET)"; fi 
 
 # Link target: automatically builds its object dependencies before executing its link command.
 
 $(PROGRAM): $(CXXOBJECTS)
     $(CXX) -o $@ $(CXXOBJECTS) $(LDFLAGS)
+#    @if $(CC) $^ -o $@ $(CFLAGS); then echo "$(OFFSET)$(COLOR)[ OK ]$(RESET)"; fi    
     @echo " "
     @echo "Linking ......"
     @echo "Creating $(PROGRAM) ......"
@@ -85,4 +100,4 @@ clean:
     @echo "Clean all Object $(CXXOBJECTS) and $(PROGRAM) Files......"
     @$(RM) -f $(CXXOBJECTS) $(PROGRAM)
     @echo "  done."
-
+#	@echo "$(OFFSET)$(COLOR)[ OK ]$(RESET)"
