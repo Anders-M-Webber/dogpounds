@@ -39,6 +39,8 @@ shift+p     ---- paste to previous line
 
 ggVG       ---- (needs to be run on normal mode). This command only selects the whole text inside the document.
 
+[p        --- copy to the position before current cursor
+]p        --- copy to the position after current cursor
 
 # deletion    ------------->
 
