@@ -348,6 +348,9 @@ gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,max
 to the right side,
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
+---------------------switch between vi and shell------------
+ctrl+z (or Z)   # exit vim temporarily
+fg        # return to vim
 
 -----------------------bash commands------------------------------
 
