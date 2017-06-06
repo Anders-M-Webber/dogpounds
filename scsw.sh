@@ -325,6 +325,9 @@ echo "to install following sw, uncomment out them..."
     echo "(20) install text browser tool elinks, works Vim while browsering webs"
  #   $INSTALLCOM elinks  
 fi
-   
+   # to install virtualbox on ubuntu 
+   # http://techapple.net/2014/05/5-best-android-emulators-linux-run-android-apps-linux-ubuntulinuxmintfedoraarchlinuxopensusemageiacentos-etc/
+   sudo apt-get install dkms
+   sudo apt-get install virtualbox
 
 echo "All set!!!"
