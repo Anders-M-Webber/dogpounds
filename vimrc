@@ -142,6 +142,12 @@ let g:syntastic_loc_list_height=5
 " for startify.vim to disable the cowboy quote
 let g:startify_custom_header = []
 
+" for nerdcommenter: allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+"commands:　"，cu": uncomment, ",cc":comment, ",cm":comment only use one set multipart delimiters 
+" more ",cs": comment with pretty block formatted layout, ",cy": Same as cc except that the commented line(s) are yanked first.
+" more: https://github.com/scrooloose/nerdcommenter
+
 " --------> set map leader etc
 let mapleader=","
 
