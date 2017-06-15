@@ -388,7 +388,7 @@ Alt + Backspace     ：see Ctrl + w
 
 Ctrl + r        ：search history inversely
 Ctrl + g        ：quit from history search
-Ctrl + p        ：previous command of history
+Ctrl + p        ：previous command of history, also show auto-complete suggesion list
 Ctrl + n        ：next command of history
 Alt + .         ：use last arg of last command
 
