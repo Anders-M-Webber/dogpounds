@@ -329,5 +329,7 @@ fi
    # http://techapple.net/2014/05/5-best-android-emulators-linux-run-android-apps-linux-ubuntulinuxmintfedoraarchlinuxopensusemageiacentos-etc/
    sudo apt-get install dkms
    sudo apt-get install virtualbox
+   sudo apt-get install progress  # man progress
+ 
 
 echo "All set!!!"
