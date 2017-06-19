@@ -6,7 +6,7 @@
 3. adb shell dumpsys <service>   # more details 
 4. adb shell dumpsys activity <services>  # all details
 
-=================call pm (Package Manager)==================
+=================call pm (Package Manager)=======http://www.cnblogs.com/JianXu/p/5380882.html===========
 5. adb shell pm list packages -f   #list all installed apks, see their associated file.
     -d   Filter to only show disabled packages.
     -e    Filter to only show enabled packages.
@@ -38,6 +38,27 @@
  9.2 adb pull <APK path from 9.1>
  9.3 aapt dump badging <pulledfile.apk>
 
+===========aapt (Android Asset Package tool)======http://elinux.org/Android_aapt=============
+1. aapt l[ist] [-v] [-a] file.{zip,jar,apk}
+   -v:    output as a table
+   -a:　　　output all infor
+
+2. aapt d[ump] [--values] WHAT file.{apk} [asset [asset ...]]
+   badging          Print the label and icon for the app declared in APK.
+   permissions      Print the permissions from the APK.
+   resources        Print the resource table from the APK.
+   configurations   Print the configurations in the APK.
+   xmltree          Print the compiled xmls in the given assets.
+   xmlstrings       Print the strings of the given compiled xml assets.
+
+3. aapt r[emove] [-v] file.{zip,jar,apk} file1 [file2 ...]
+     Delete specified files from Zip-compatible archive.
+
+4. aapt a[dd] [-v] file.{zip,jar,apk} file1 [file2 ...]
+    Add specified files to Zip-compatible archive.
+
+5. aapt v[ersion]
+   Print program version.
 ================= misc================
 13. adb get-serialno 
     - adb get-product     # list all adb commands
@@ -172,3 +193,5 @@ adb shell screenrecord --verbose   # Displays log information on the command-lin
 
 ========misc========
 adb devices -l
+adb shell dmesg   # print kernel debug message to screen
+adb shell cmd package dump-profiles <package>  # To produce a text form of the profile information
