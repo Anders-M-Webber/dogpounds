@@ -1,16 +1,12 @@
 0. adb root   # get permission
-
+0.1 adb unroot
 ==================about android service=============
 1. adb shell service list     # list all service names and package names
-2. adb shell service check <service>   # found <service> or not
+2. adb shell service check <service>   # <don't know how to use> found <service> or not, 
 3. adb shell dumpsys <service>   # more details 
 4. adb shell dumpsys activity <services>  # all details
 
-=================about log====================
-6. adb logcat *:W    # displays all log messages with priority level "warning" and higher
-7. adb logcat *.D  | grep -i here   # displays messages with "here".
-
-=================about apk==================
+=================call pm (Package Manager)==================
 5. adb shell pm list packages -f   #list all installed apks, see their associated file.
     -d   Filter to only show disabled packages.
     -e    Filter to only show enabled packages.
@@ -20,9 +16,6 @@
     -u     Also include uninstalled packages.
    --user <USER_ID>     The user space to query.
 
-9. adb shell am start -n com.package.name/com.package.name.ActivityName   # to launch an activity
-  - adb shell am start -n <package_name>/.<activity_class_name>
-
 10. adb shell pm dump PACKAGE_NAME | grep -A 1 MAIN    # found out the main activity or
   10.1 adb shell dumpsys package | grep -i " + (enter package name)  + " | grep Activity
 
@@ -31,6 +24,10 @@
 
 10.3   adb shell pm clear <PACKAGE>    #Deletes all data associated with a package.
    e.g,    adb shell pm clear com.test.abc    #clearing app data, cache
+   
+===============call am (Activity Manager)===========
+9. adb shell am start -n com.package.name/com.package.name.ActivityName   # to launch an activity
+  - adb shell am start -n <package_name>/.<activity_class_name>
 
 =====================about activity==========
 11. adb shell dumpsys activity services # list all serivces
@@ -43,7 +40,7 @@
 
 ================= misc================
 13. adb get-serialno 
-    - adb get-product 
+    - adb get-product     # list all adb commands
     - adb shell cat /proc/cpuinfo
     - adb shell top [-m 6] # only list top 6 processes 
     - adb shell cat /proc/meminfo
@@ -73,8 +70,6 @@
      -d allow version code downgrade;
      -p partial application install
 19. adb uninstall [-k] apk       # -k Keep the data and cache directories around after package removal.
-20. android list targets/avd      # to show all targets/avd
-
 
 ================= network===============
 21. adb forward <local> <remote>   # forward socket connections
@@ -104,7 +99,7 @@ STEP 6.   Remove USB cable from device, and confirm you can still access device:
 adb logcat [option] [filter-specs]  # Prints log data to the screen.
 
 adb logcat *:V lowest priority, filter to only show Verbose level
-adb logcat *:D filter to only show Debug level
+adb logcat *:D | grep -i here         filter to only show Debug level
 adb logcat *:I filter to only show Info level
 adb logcat *:W filter to only show Warning level
 adb logcat *:E filter to only show Error level
@@ -135,8 +130,7 @@ adb logcat -v time           #Display the date, invocation time, priority/tag, a
 adb logcat -v threadtime    #Display the date, invocation time, priority, tag, and the PID and TID of the thread issuing the message.
 adb logcat -v long           #Display all metadata fields and separate messages with blan
 
-
-=================dumpsys========
+================dumpsys========
 adb shell dumpsys [options]         # dumps system data
 
 adb shell dumpsys meminfo
@@ -145,7 +139,7 @@ adb shell dumpsys batterystats   # collects battery data from your device
    # STEP 1 adb shell dumpsys batterystats > batterystats.txt STEP 2 python historian.py batterystats.txt > batterystats.html
 adb shell dumpsys batterystats --reset    #erases old collection data
 adb shell dumpsys activity
-adb shell dumpsys gfxinfo com.android.phone measuring com.android.phone ui performance
+adb shell dumpsys gfxinfo com.android.phone     # measuring com.android.phone ui performance
 
 adb shell dumpstate
 ===============================recoder================
@@ -175,3 +169,6 @@ adb shell screenrecord --verbose   # Displays log information on the command-lin
 30. adb sideload <update.zip>  # flashing/restoring Android update.zip packages.
 31. adb shell setprop
 32. adb shell setprop <service.adb.tcp.port 5555>
+
+========misc========
+adb devices -l
