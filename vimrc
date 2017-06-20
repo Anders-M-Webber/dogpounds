@@ -62,7 +62,8 @@ set relativenumber
 set nobackup
 set nowrap
 set noswapfile
-
+"to enable auto clipboard copy, need to "sudo apt-get install vim-gui-common"
+set clipboard=unnamedplus
 set wildmenu
 
 set cursorline cursorcolumn
