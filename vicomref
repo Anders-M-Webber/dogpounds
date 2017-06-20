@@ -16,6 +16,10 @@ H           – Go to the first line of current screen.
 M           – Go to the middle line of current screen.
 L           – Go to the last line of current screen.
 
+zz - move current line to the middle of the screen
+zt - move current line to the top of the screen
+zb - move current line to the bottom of the screen
+
 ctrl+d      – Jump  (down) a half screen
 ctrl+u      – Jump  (up) one half screen
 
