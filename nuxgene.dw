@@ -104,3 +104,6 @@ sudo vim /etc/UPower/UPower.conf
 # Change IgnoreLid to IgnoreLid=true, save it
 service upower restart
 
+------check process--
+top -H -p <pid>
+ps -e -T | sed -n '1p; /keyword/p;'
