@@ -195,3 +195,25 @@ adb shell screenrecord --verbose   # Displays log information on the command-lin
 adb devices -l
 adb shell dmesg   # print kernel debug message to screen
 adb shell cmd package dump-profiles <package>  # To produce a text form of the profile information
+
+
+============fastboot============
+　　fastboot erase system #擦除system分区
+　　fastboot erase boot #擦除boot分区
+　　fastboot erase cache #擦除cache分区
+　　fastboot erase userdata #擦除userdata分区
+
+　　fastboot flash system system.img #写入system分区
+　　fastboot flash boot boot.img #写入boot分区
+　　fastboot flash recovery recovery.img
+　　fastboot flash radio radio.img
+  
+　　fastboot reboot #重启手机
+　　fastboot reboot-bootloader #重启到bootloader模式
+　　fastboot oem rebootRUU #重启到HTC RUU刷机模式
+
+　　华为解锁命令：fastboot oem unlock ***************(***代表imei);
+　　HTC解锁命令：fastboot flash unlocktoken unlock_code.bin(需事先申请解锁文件);
+ 
+　　　fastboot getvar cid  #　查看CID
+ 　　fastboot oem writecid 11111111  #　　修改超级CID(需要S-OFF)
