@@ -219,9 +219,10 @@ zM      -> fold Most.
  ]p           Paste text, aligning indentation with surroundings
 
  =i{          Re-indent the 'inner block', i.e. the contents of the block
+ =2i{         formats the current block and the block around it. 
  =a{          Re-indent 'a block', i.e. block and containing braces
  =2a{         Re-indent '2 blocks', i.e. this block and containing block
-
+    
  >i{          Increase inner block indent
  <i{          Decrease inner block indent
 
