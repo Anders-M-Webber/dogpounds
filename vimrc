@@ -25,6 +25,7 @@ Plugin 'Mark' " use to highlight marks, i.e., multiply keywords can be highlight
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-cursors
+"https://github.com/xuhdev/vim-latex-live-preview, :LLPStartPreview 
 Plugin 'xuhdev/vim-latex-live-preview'
 
 "for Java
