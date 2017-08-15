@@ -11,6 +11,10 @@
 `[ or `]    # jump to beginning/end of previous changed/yanked
 `< or `>    # jump to beginning/end of last visual selection
 
+fx       # jump to "x" in line
+tx       # jump to previous position of "x"
+
+
 
 H           – Go to the first line of current screen.
 M           – Go to the middle line of current screen.
@@ -70,6 +74,18 @@ jdG                     # delelte all lines after
 :1,$d                   # delete all
 
 J(shift + j)　　        # join two lines, gJ del space
+
+:set paste          #while auto-indent is enabled, you must change to paste mode by this command,
+                    #Then you can change to insert mode and paste your code.
+:set nopaste         # see above, After pasting is done, use this command.
+set pastetoggle=<F2>  # to turn off paste mode.  vim offers toggling paste mode
+
+#To turn off auto-insert of comments, you can add these lines to your vimrc:
+augroup auto_comment
+    au!
+    au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
+
 
 cw              #del to the end of the word
 c0              #del to the begining of the line
