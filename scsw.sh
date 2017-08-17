@@ -331,5 +331,17 @@ fi
    sudo apt-get install virtualbox
    sudo apt-get install progress  # man progress
  
+ #install others
+ sudo apt-get install shellcheck htop
+ # install command line tools, not used yet
+ axel  # download via mul-thread
+ fpp  # pathpicker (with git)
+ mosh # like ssh
+ yapf  # for python format
+ jp # format json
+ mycli  # mysql client
+ #install fzf
+ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+ ~/.fzf/install
 
 echo "All set!!!"
