@@ -14,8 +14,6 @@
 fx       # jump to "x" in line
 tx       # jump to previous position of "x"
 
-
-
 H           – Go to the first line of current screen.
 M           – Go to the middle line of current screen.
 L           – Go to the last line of current screen.
@@ -96,6 +94,10 @@ S               # del currernt line and go into insert mode
 
 ci(, di(, yi(     #change, del/cut, yank content between ()
 ca(, da(, ya(     #change, del/cut, yank content in and contains()
+
+r<enter>    # break line in normal mode
+R<enter>    # break line in mormal mode (don't replay current character)
+:nnoremap <NL> i<CR><ESC>    # break line (Control-J generates the same character code as <NL>)
 
 
 # select or search          ----------------->
