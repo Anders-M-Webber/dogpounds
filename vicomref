@@ -58,7 +58,7 @@ dk              # delete next line
 diw             --- delete current word (does not contain blank)
 daw             --- delete current word (contains blank)
 
-d$ or D          --- delete from current to the end of line
+d$ or D          --- delete from current to the end of line and stay in normal mode
 d]) or ct)             --- delete from current to the end of ) 
 d]} or ct}              --- delete from current to the end of }
 cT)                    --- delete backward
@@ -92,7 +92,7 @@ c0              #del to the begining of the line
 c$              #del to the end of the line
 c2b             #del 2 words backward
 s               # del current character and be insert mode
-S               #
+S               # del currernt line and go into insert mode
 
 ci(, di(, yi(     #change, del/cut, yank content between ()
 ca(, da(, ya(     #change, del/cut, yank content in and contains()
