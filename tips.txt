@@ -3,4 +3,6 @@
     - unzip it to "/usr/share/texlive/texmf-dist/tex/latex/tikz-uml
     - under "/usr/share/texlive/texmf-dist" where the "ls-R" is, do "mktexlsr" to update the hash.
     
-2.
+2. Set Up SSH Keys 
+    - ssh-keygen -t rsa   #Create the RSA Key Pair
+    - https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
