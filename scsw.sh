@@ -167,6 +167,10 @@ else
     echo "(9) git all has been installed!\n"
 fi
 
+#kermit does not have GUI
+# you may use gtkterm as an alternative
+# sudo apt-get install gtkterm
+
 if [ -z "$(echo `which kermit`)" ];then
     echo "(9-1) kermit is not installed in the system, install it (YES)?"
     read gitinstall
