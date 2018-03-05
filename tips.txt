@@ -18,3 +18,11 @@
     font = Liberation Mono 11.5
     foreground_color = "#dfdbd2"
 palette = "#3e3436:#CC0000:#4E9A06:#C4A000:#3465A4:#75507B:#06989A:#D3D7CF:#555753:#EF2929:#8AE234:#FCE94F:#729fcf:#AD7FA8:#34E2E2:#EEEEEC"
+
+4. ungroup/uncombine windows
+  4.1 use "alt + `"
+  4.2 install Compiz, #sudo apt-get install compizconfig-settings-manager compiz-plugins
+      then Start ccsm (the Compiz Config Settings Manager) and find
+     Desktop ► Ubuntu Unity Plugin ► Switcher (tab) to disable it.
+     https://askubuntu.com/questions/123977/how-to-ungroup-windows-on-task-switcher
+ 
