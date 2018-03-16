@@ -348,4 +348,8 @@ fi
  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
  ~/.fzf/install
 
+  #install ssh
+  sudo apt-get install openssh-server
+  sudo service ssh status
+  #sudo service ssh restart
 echo "All set!!!"
