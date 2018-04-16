@@ -221,8 +221,8 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 ""tags
-set autochdir
-set tags=tags;
+"set autochdir
+"set tags=tags; "use the other one
 "
 nmap <leader>cs : cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>cg : cs find g <C-R>=expand("<cword>")<CR><CR>
