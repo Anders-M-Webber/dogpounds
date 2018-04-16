@@ -2,9 +2,10 @@ set nocompatible
 filetype off
 
 set shell=/bin/bash
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-"call vundle#begin()
+"set rtp+=~/.vim/bundle/vundle " use below one otherwise
+set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#rc()  "use below one otherwise
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
