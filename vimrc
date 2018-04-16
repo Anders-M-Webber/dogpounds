@@ -180,6 +180,25 @@ let g:NERDCommentEmptyLines = 1
 " more ",cs": comment with pretty block formatted layout, ",cy": Same as cc except that the commented line(s) are yanked first.
 " more: https://github.com/scrooloose/nerdcommenter
 
+" cscope.vim, without this, quickfix windown won't show all reference function positions/calls/files
+if has("cscope")
+	set csprg=/usr/bin/cscope
+    set csto=1
+    set cst
+    set nocsverb
+    if filereadable("cscope.out")
+		cs add $PWD/cscope.out
+" else add database pointed to by environment
+	elseif $CSCOPE_DB != ""
+"		echom $CSCOPE_DB
+"		sleep 500
+"		cs add $CSCOPE_DB
+    endif
+"	cs add /home/user/cscope/mib2v7_fw5.31.22/cscope.out /home/user/
+"	if (set csverb) is enabled, then the search results will be displayed twice
+"	in quickfix window!!!!!
+"    set csverb
+endif
 " --------> set map leader etc
 let mapleader=","
 
