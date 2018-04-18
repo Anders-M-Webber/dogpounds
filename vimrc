@@ -61,7 +61,8 @@ set number
 set relativenumber
 
 set nobackup
-set nowrap
+set nowrap  " display long lines as just one line 
+set nowrapscan "stop searching wrap around
 set noswapfile
 "to enable auto clipboard copy, need to "sudo apt-get install vim-gui-common"
 set clipboard=unnamedplus
@@ -121,16 +122,16 @@ endif
 set encoding=utf8
 set fileformat=unix
 
-set hlsearch
-set incsearch
-set ignorecase
+set hlsearch   "search highlighting
+set incsearch  "show match as search proceeds
+set ignorecase  "case insensitive
 
 set mouse=a
 
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set smartcase
+set smartcase  "use case if any caps used 
 
 set autoindent
 "set cindent
@@ -138,7 +139,7 @@ set smartindent
 
 
 set lazyredraw
-set showmatch
+set showmatch  "show matching bracket
 set mat=2
 
 " Always show the status line
