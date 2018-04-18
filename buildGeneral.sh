@@ -12,7 +12,7 @@
 usage()
 {
 	echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "
-	echo " usage : $0  path_1 ... path_n cscope_db_name"
+	echo " usage : sudo $0  path_1 ... path_n cscope_db_name"
 	echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 }
 
@@ -25,7 +25,7 @@ then
 fi
 
 DBNAME=${@: -1}  #the last parameter
-CSCOPE_DB_PATH=/home/user/cscope/$DBNAME
+CSCOPE_DB_PATH=$HOME/cscope/$DBNAME
 
 # main() start
 
