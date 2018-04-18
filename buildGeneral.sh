@@ -55,7 +55,7 @@ do
 		find $var -name "Makefile" -o -name "makefile" -o -name "GNUmakefile" >> cscope.files
 
 		echo "......find all other files (ini)  --->"
-		find $var -name "*.ini" >> cscope.files
+		find $var -name "*.ini" -o -name "*.cu" >> cscope.files
     
     echo " ... maybe you need Java files ? NOT TESTED YET !!!---->"
     find $var -name "*.java" >> cscope.files
