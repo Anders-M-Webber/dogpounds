@@ -24,7 +24,7 @@ then
     exit
 fi
 
-DBNAME=${@: -1}  #the last parameter
+DBNAME=${@: -1}  #save the last parameter as database_name
 CSCOPE_DB_PATH=$HOME/cscope/$DBNAME
 
 # main() start
