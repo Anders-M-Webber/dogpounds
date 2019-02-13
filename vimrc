@@ -28,6 +28,9 @@ Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-c
 "https://github.com/xuhdev/vim-latex-live-preview, :LLPStartPreview 
 Plugin 'xuhdev/vim-latex-live-preview'
 
+"color theme
+Plug 'agude/vim-eldar'
+
 "for Java
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'java.vim'
@@ -54,6 +57,7 @@ filetype indent on
 syntax on
 " turn on syntax highlight function
 syntax enable
+silent! colorscheme eldar " Custom color scheme
 set t_Co=256
 set background=dark
 
