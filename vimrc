@@ -29,6 +29,13 @@ Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-c
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
+"front end
+"Plugin 'jelera/vim-javascript-syntax'
+"git clone https://github.com/vim-scripts/JavaScript-Indent.git
+"description: https://github.com/ternjs/tern_for_vim
+"git clone https://github.com/ternjs/tern_for_vim.git
+"Plugin 'javascript-libraries-syntax'
+
 "color theme
 Plug 'agude/vim-eldar'
 
