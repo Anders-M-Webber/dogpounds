@@ -27,6 +27,7 @@ Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-cursors
 "https://github.com/xuhdev/vim-latex-live-preview, :LLPStartPreview 
 Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 "color theme
 Plug 'agude/vim-eldar'
@@ -175,6 +176,14 @@ set statusline+=%*
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
+
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 " for startify.vim to disable the cowboy quote
 let g:startify_custom_header = []
