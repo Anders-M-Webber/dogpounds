@@ -35,6 +35,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 "description: https://github.com/ternjs/tern_for_vim
 "git clone https://github.com/ternjs/tern_for_vim.git
 "Plugin 'javascript-libraries-syntax'
+"Plugin 'JulesWang/css.vim'
 
 "color theme
 Plug 'agude/vim-eldar'
