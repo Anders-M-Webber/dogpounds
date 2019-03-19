@@ -7,4 +7,5 @@
   -> Settings -> Details -> About
   -> lshw -c vedio
    --> modinfo i915  #i915 is generic driver
-   
+3. find out all services
+  -> service --status-all
