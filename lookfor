@@ -3,5 +3,8 @@
   -> lspci -vnn | grep VGA -A 12
   -> lshw -numeric -C display
 2. find out what grapic driver is runing
+  -> glxinfo | grep OpenGL  #apt-get install mesa-util
+  -> Settings -> Details -> About
   -> lshw -c vedio
    --> modinfo i915  #i915 is generic driver
+   
