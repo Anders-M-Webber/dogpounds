@@ -1,0 +1,4 @@
+1. find out what Nvidia graphic card
+  -> lspci | grep -i nv
+  -> lspci -vnn | grep VGA -A 12
+  -> lshw -numeric -C display
