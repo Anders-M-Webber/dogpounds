@@ -2,3 +2,6 @@
   -> lspci | grep -i nv
   -> lspci -vnn | grep VGA -A 12
   -> lshw -numeric -C display
+2. find out what grapic driver is runing
+  -> lshw -c vedio
+   --> modinfo i915  #i915 is generic driver
