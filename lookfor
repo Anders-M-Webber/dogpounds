@@ -9,3 +9,5 @@
    --> modinfo i915  #i915 is generic driver
 3. find out all services
   -> service --status-all
+4. find out information of services (http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
+  -> sysystemctl status bluetooth.service
