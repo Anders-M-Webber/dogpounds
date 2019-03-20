@@ -1,1 +1,12 @@
 1. T440P, NV GT730M
+2. systemd dirctory:
+   -> /etc/systemd/system/
+3. pip for python3
+  -> sudo apt-get remove python-pip #remove pip for python2
+  -> sudo apt-get install python3-pip
+  -> sudo python3 -m pip install pdbpp  #install pdb++
+4. pdbpp for python3
+   -> create .pdbrc.py with 
+   import pdb
+   class Config(pdb.DefaultConfig):
+     sticky_by_default = True
