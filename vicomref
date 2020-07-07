@@ -34,6 +34,8 @@ nG          - jump to n(th) lines
 :%s/pattern//gn       -To count the number of matches of a pattern, Omit g to display the number of lines where the pattern matches
 :10,50s/pattern//gn   -To restrict the count to a region of the text
 :'<,'>s/pattern//gn   -counts the number of occurrences in the lines in the most recent visual selection
+:%s///gn              -To count the number of occurrences of the last used search pattern
+
 
 # copy/paste   ------------------->
 
