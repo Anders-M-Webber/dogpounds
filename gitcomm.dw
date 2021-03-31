@@ -117,7 +117,7 @@ or   git status
     to undo a cherry-pick: (## git reset does NOT work)
     git cherry-pick --abort  or ### git checkout branch_a 
 
-    to cherry-pick (git version should be newer than 1.7.1) multiple commits (i.e. commits from 62ecb3 to 76cada onto mib2_clu4):
+    to cherry-pick (git version should be newer than 1.7.1) multiple commits (i.e. commits from 62ecb3 to 76cada onto plat2_clu4):
         git checkout branch_a 
         git svn fetch
         git svn rebase
@@ -196,7 +196,7 @@ git diff commit_hash -- path/to/file          #Git diff a file with another revi
 12. -------------checkout code by date/time--------------
 #git checkout 'master@{2015-08-18 18:30:00}'      #git-rev-parse
 
-    git checkout `git rev-list -n 1 --before="2015-10-01 18:00" trunk`   #trunk (mater for git), you can change trunk to mib2_clu6
+    git checkout `git rev-list -n 1 --before="2015-10-01 18:00" trunk`   #trunk (mater for git), you can change trunk to plat2_clu6
 
     git checkout trunk   ######update to the latest code
 
@@ -348,7 +348,7 @@ svn export  (no .svn)
 ---------------------git only-----------
 
 #########cherry-pick==========
-    git checkout mib2/cluster7
+    git checkout plat2/cluster7
     git fetch
     git rebase
     git cherry-pick a77ca2
