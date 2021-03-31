@@ -201,7 +201,7 @@ git diff commit_hash -- path/to/file          #Git diff a file with another revi
     git checkout trunk   ######update to the latest code
 
 13. ---------------------patch diff-------------
-###  apply patch file to your current code, i.e. ../gemib, (--no-prefix means there no file directory prefix)
+###  apply patch file to your current code, i.e. ../youho, (--no-prefix means there no file directory prefix)
 
     ( if generate patch file like this,     git diff --no-prefix > hello.patch, then should use " -p0" )
     $ patch -p0 < hello.patch   # to remove the patch : $ patch -R -p0 < hello.patch
@@ -214,10 +214,10 @@ git diff commit_hash -- path/to/file          #Git diff a file with another revi
 # where the file is, for exmaple, you see the message when the patch file is "route/RouteFlag.cpp"， 
 # sometimes have to go to the (up) directory of the file that need to be patched
 
-#### ~/../gemib$ patch -p0 < patchfile.diff
+#### ~/../youho$ patch -p0 < patchfile.diff
 #### error message !!!!!!
 #### then should go to the "route/" directory,
-#### ~/../gemib/route$ patch -p0 < patchfile.diff
+#### ~/../youho/route$ patch -p0 < patchfile.diff
 
 
 ####reverse the patch.
@@ -281,7 +281,7 @@ git diff commit_hash -- path/to/file          #Git diff a file with another revi
     ---------------------------------------------------------------------   
 
     ----> if git changed ip, then
-    git remote set-url origin weining@10.1.10.109:/home/git/gemib
+    git remote set-url origin mike@10.1.10.109:/home/git/youho
 
     ----> push all local to the server
     git push origin --all
@@ -292,7 +292,7 @@ git diff commit_hash -- path/to/file          #Git diff a file with another revi
     ----------------------------->>>>>>>>>>>>>> svn command-------------------------------------------------------------
 
     svn update/up
-    svn checkout/co    # svn checkout svn+ssh://weining@10.1.10.109/home/svn/repository/streetview
+    svn checkout/co    # svn checkout svn+ssh://mike@10.1.10.109/home/svn/repository/youho
     svn commit/ci
     svn add file/folder  (then "svn commit")
     svn mv old_file_name new_file_name
