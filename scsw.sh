@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt install vim git g++ gcc binutils build-essential ctags cscope make cmake python
+
 #### this file is to install some sw for view sc
 #### @copyLeft, no guarantee!!!
 
