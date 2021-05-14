@@ -40,7 +40,14 @@ Plugin 'rust-lang/rust.vim'
 
 "color theme
 Plug 'agude/vim-eldar'
-
+" smooth motion
+Plug 'yuttie/comfortable-motion.vim'
+"show indent
+Plug 'yuttie/comfortable-motion.vim'
+"Whitespace highlighting is enabled by default, with a highlight color of red.
+Plugin 'ntpeters/vim-better-whitespace'
+"An always-on highlight for a unique character in every word on a line to help you use f, F and family.
+Plugin 'unblevable/quick-scope'
 "for Java
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'java.vim'
@@ -194,6 +201,8 @@ let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
+"have indent guides enabled by default
+let g:indent_guides_enable_on_vim_startup = 1
 " for startify.vim to disable the cowboy quote
 let g:startify_custom_header = []
 
@@ -202,6 +211,11 @@ let g:NERDCommentEmptyLines = 1
 "commands:　"，cu": uncomment, ",cc":comment, ",cm":comment only use one set multipart delimiters 
 " more ",cs": comment with pretty block formatted layout, ",cy": Same as cc except that the commented line(s) are yanked first.
 " more: https://github.com/scrooloose/nerdcommenter
+" for quick-scope
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" Trigger a highlight only when pressing f and F.
+let g:qs_highlight_on_keys = ['f', 'F']
 
 " cscope.vim, without this, quickfix windown won't show all reference function positions/calls/files
 if has("cscope")
