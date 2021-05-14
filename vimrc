@@ -19,7 +19,7 @@ Plugin 'bling/vim-airline' " sugar for eyes -status line
 "Plugin 'flazz/vim-colorschemes' " use to change colorscheme but no use now
 Plugin 'c.vim' " use to edit c file by inserting (){}comments, etc
 Plugin 'snipMate' " to expand for to for(....)
-Plugin 'Syntastic' " use to check syntax error
+Plugin 'scrooloose/syntastic' " use to check syntax error
 Plugin 'Mark' " use to highlight marks, i.e., multiply keywords can be highlighted
 "Plugin 'vim-scripts/Conque-GDB'
 Plugin 'scrooloose/nerdcommenter'
@@ -28,6 +28,7 @@ Plugin 'terryma/vim-multiple-cursors' "https://github.com/terryma/vim-multiple-c
 "https://github.com/xuhdev/vim-latex-live-preview, :LLPStartPreview 
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'rust-lang/rust.vim'
 
 "front end
 "Plugin 'jelera/vim-javascript-syntax'
