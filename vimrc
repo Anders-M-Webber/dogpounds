@@ -204,7 +204,7 @@ let g:cpp_concepts_highlight = 1
 "have indent guides enabled by default
 let g:indent_guides_enable_on_vim_startup = 1
 " for startify.vim to disable the cowboy quote
-let g:startify_custom_header = []
+"let g:startify_custom_header = []
 
 " for nerdcommenter: allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -216,6 +216,14 @@ let g:NERDCommentEmptyLines = 1
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Trigger a highlight only when pressing f and F.
 let g:qs_highlight_on_keys = ['f', 'F']
+"for syntax
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " cscope.vim, without this, quickfix windown won't show all reference function positions/calls/files
 if has("cscope")
