@@ -40,7 +40,7 @@ Plugin 'rust-lang/rust.vim'
 
 "color theme
 Plug 'agude/vim-eldar'
-" smooth motion
+" smooth motion, c-d, c-u
 Plug 'yuttie/comfortable-motion.vim'
 "show indent
 Plug 'yuttie/comfortable-motion.vim'
@@ -51,7 +51,7 @@ Plugin 'unblevable/quick-scope'
 "for Java
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'java.vim'
-Plugin 'mhizn/startify.vim'
+"Plugin 'mhizn/startify.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
